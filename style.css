@@ -5,7 +5,7 @@
   --secondary-color: #ffc135;
   --tertiary-color: #df1c1c;
   --text-dark: #212529;
-  --white: #b3ff01;
+  --white: #09a109;
   --max-width: 1280px;
   --header-font-1: "Alfa Slab One", serif;
   --header-font-2: "Bebas Neue", sans-serif;
@@ -185,6 +185,19 @@ nav {
   font-size: 3rem;
 }
 
+#funfacts{
+  background-color: rgb(243, 243, 243);
+}
+.fact__card{
+  box-shadow:  0px 1px 13px 1px rgba(0,0,0,0.32);;
+  padding:25px;
+  text-align: center;
+}
+.fact__card h4{
+  font-size: larger;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+}
 
 
 .banner__container {
@@ -293,28 +306,6 @@ nav {
   line-height: 1.75rem;
 }
 
-.event__content {
-  display: grid;
-  gap: 2rem;
-  padding: 1rem;
-  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-}
-
-.event__details {
-  text-align: center;
-}
-
-.event__details h3 {
-  font-size: 2rem;
-  font-weight: 500;
-  font-family: var(--header-font-2);
-  color: var(--text-dark);
-}
-
-.event__details .section__header {
-  margin-bottom: 1rem;
-}
-
 .reservation {
   position: relative;
   isolation: isolate;
@@ -353,9 +344,9 @@ nav {
 }
 
 .footer {
-  background-image: url("assets/footer-bg.png");
+  background-image: url("photos/footer.jpg");
   background-position: center center;
-  background-size: cover;
+  background-size:cover;
   background-repeat: no-repeat;
 }
 
@@ -428,6 +419,7 @@ nav {
   .order__grid {
     grid-template-columns: repeat(2, 1fr);
   }
+ 
 }
 
 @media (width > 768px) {
@@ -508,6 +500,7 @@ nav {
     grid-template-columns: repeat(3, 1fr);
   }
 
+
   .event__content {
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -562,5 +555,7 @@ nav {
   .order__grid {
     gap: 2rem;
   }
+ 
+
 }
 

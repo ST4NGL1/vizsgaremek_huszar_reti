@@ -38,6 +38,12 @@ ScrollReveal().reveal(".order__card", {
   interval: 500,
 });
 
+ScrollReveal().reveal(".about_card", {
+  ...scrollRevealOption,
+  interval: 500,
+});
+
+
 ScrollReveal().reveal(".event__content", {
   duration: 1000,
 });

@@ -15,7 +15,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
+
 
 .section__container {
   max-width: 100%;
@@ -48,6 +50,7 @@
   background-color: var(--secondary-color);
   transition: 0.3s;
   cursor: pointer;
+  border-radius: 1rem;
 }
 
 .btn:hover {
@@ -186,12 +189,15 @@ nav {
 }
 
 #funfacts{
-  background-color: rgb(243, 243, 243);
+  background-color: #2f3136;
 }
 .fact__card{
   box-shadow:  0px 1px 13px 1px rgba(0,0,0,0.32);;
   padding:25px;
   text-align: center;
+  background-color: white;
+  border-radius: 1rem;
+  
 }
 .fact__card h4{
   font-size: larger;
@@ -309,6 +315,7 @@ nav {
 .reservation {
   position: relative;
   isolation: isolate;
+  background-color: #2f3136;
 }
 
 .reservation__container h3 {
@@ -333,6 +340,7 @@ nav {
   border: 1px solid var(--text-dark);
   font-size: 1rem;
   color: var(--text-dark);
+  border-radius: 1rem;
 }
 
 .reservation__container input::placeholder {
@@ -377,7 +385,7 @@ nav {
   align-items: center;
   gap: 1rem;
   font-weight: 500;
-  color: red;
+  color: #ffc135;
 }
 
 .footer__links li span {
@@ -393,7 +401,7 @@ nav {
 
 .footer__socials a {
   font-size: 1.5rem;
-  color: red;
+  color: #ffc135;
 }
 
 .footer__socials a:hover {
@@ -403,8 +411,9 @@ nav {
 .footer__bar {
   padding: 1rem;
   font-size: 0.9rem;
-  color: red;
+  color: #ffc135;
   text-align: center;
+  background-color: #2f3136;
 }
 
 @media (width > 540px) {
@@ -424,12 +433,13 @@ nav {
 
 @media (width > 768px) {
   nav {
-    position: static;
+    position: relative;
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
+    
   }
 
   .nav__header {

@@ -47,3 +47,4 @@ ScrollReveal().reveal(".about_card", {
 ScrollReveal().reveal(".event__content", {
   duration: 1000,
 });
+

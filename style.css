@@ -51,7 +51,7 @@
 }
 
 .btn:hover {
-  background-color: var(--primary-color);
+  background-color: #722F37;
 }
 
 img {
@@ -95,7 +95,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: red;
+  background-color: #722F37;
 }
 
 .nav__logo img {
@@ -142,7 +142,7 @@ nav {
 }
 
 .nav__links a:hover {
-  color: var(--secondary-color);
+  color: #722F37;
 }
 
 .header__container {
@@ -377,7 +377,7 @@ nav {
   align-items: center;
   gap: 1rem;
   font-weight: 500;
-  color: var(--white);
+  color: red;
 }
 
 .footer__links li span {
@@ -393,17 +393,17 @@ nav {
 
 .footer__socials a {
   font-size: 1.5rem;
-  color: var(--white);
+  color: red;
 }
 
 .footer__socials a:hover {
-  color: var(--secondary-color);
+  color: #722F37;
 }
 
 .footer__bar {
   padding: 1rem;
   font-size: 0.9rem;
-  color: var(--white);
+  color: red;
   text-align: center;
 }
 
@@ -468,7 +468,7 @@ nav {
   }
 
   .nav__links a:hover {
-    color: var(--tertiary-color);
+    color: #722F37;
   }
 
   .header__container {

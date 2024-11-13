@@ -46,7 +46,7 @@
   outline: none;
   border: none;
   font-size: 1rem;
-  color: var(--white);
+  color: white;
   background-color: var(--secondary-color);
   transition: 0.3s;
   cursor: pointer;
@@ -127,7 +127,7 @@ nav {
   justify-content: center;
   flex-direction: column;
   gap: 2rem;
-  background-color: var(--primary-color);
+  background-color: #2f3136;
   transition: 0.5s;
   z-index: -1;
   transform: translateY(-100%);
@@ -140,7 +140,7 @@ nav {
 .nav__links a {
   font-weight: 600;
   white-space: nowrap;
-  color: var(--white);
+  color: white;
   transition: 0.3s;
 }
 

@@ -4,32 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="view-transition" content="same-origin">
     <link rel="stylesheet" href="login®istration_style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Grillezett Álom</title>
 </head>
 <body>
     <div class="wrapper">
       <form action="#">
-        <h2>Login</h2>
+        <a href="main.html" id="back"><i class="material-icons" style="font-size: 25px">close</i></a>
+        <h2>Bejelentkezés</h2>
           <div class="input-field">
           <input type="text" required>
-          <label>Enter your email</label>
+          <label>Email</label>
         </div>
         <div class="input-field">
           <input type="password" required>
-          <label>Enter your password</label>
+          <label>Jelszó</label>
         </div>
         <div class="forget">
           <label for="remember">
             <input type="checkbox" id="remember">
-            <p>Remember me</p>
+            <p>Emlékezz rá</p>
           </label>
-          <a href="#">Forgot password?</a>
+          <a href="#">Elfelejtette jelszavát?</a>
         </div>
         <button type="submit">Log In</button>
         <div class="register">
-          <p>Don't have an account? <a href="#">Register</a></p>
+          <p>Nincsen fiókja? <a href="#">Regisztrálj most!</a></p>
         </div>
+     
+
+      
       </form>
     </div>
   </body>

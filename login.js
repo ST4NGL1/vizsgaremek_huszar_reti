@@ -6,8 +6,13 @@ document.getElementById('LoginForm').addEventListener('submit', function(event) 
     const password = document.getElementById('password').value;
 
     // Validate form data
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!email || !password) {
         document.getElementById('response').textContent = 'Please fill in all fields.';
+        return;
+    }
+    if (!emailRegex.test(email)) {
+        document.getElementById('response').textContent = 'Please enter a valid email address.';
         return;
     }
 
@@ -24,22 +29,24 @@ document.getElementById('LoginForm').addEventListener('submit', function(event) 
     })
     .then(response => response.json()) // Parse JSON response
     .then(data => {
-        const responseDiv = document.getElementById('response');
+        // Clear loading text
+        responseDiv.textContent = ''; // Clear previous messages
+
         if (data.status === 'success') {
             responseDiv.style.color = 'green';
-            responseDiv.textContent = "Sikeres bejelentkezés!";
+            responseDiv.textContent = "Sikeres bejelentkezés!"; // Successful login message
             // Redirect user to another page (e.g., home or dashboard)
             window.location.href = 'main.html';  // Adjust the target page as needed
         } else {
             responseDiv.style.color = 'red';
-            responseDiv.textContent = data.message;
+            responseDiv.textContent = data.message; // Display error message
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        const responseDiv = document.getElementById('response');
+        console.error('Error:', error); // Log the error in the console
         responseDiv.style.color = 'red';
-        responseDiv.style.backgroundColor="blue";
-        responseDiv.textContent = 'An error occurred. Please try again later.';
+        responseDiv.style.backgroundColor = "blue";
+        responseDiv.textContent = 'An error occurred. Please try again later.'; // General error message
     });
 });
+

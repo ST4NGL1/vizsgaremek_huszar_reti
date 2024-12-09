@@ -10,34 +10,44 @@
     <title>Grillezett Álom</title>
 </head>
 <body>
+    
+  
     <div class="wrapper">
-      <form action="#">
-        <a href="main.html" id="back"><i class="material-icons" style="font-size: 25px">close</i></a>
-        <a href="main.html"><img src="photos/logo.png" width="100%"></a>
+            <div id="response"></div>
+
+      <form id="LoginForm" method="POST">
+          <a href="main.html" id="back"><i class="material-icons" style="font-size: 25px">close</i></a>
+          <img src="photos/logo.png" width="100%" alt="Grillezett Álom Logo">
         
         <div class="input-field">
-          <input type="text" required>
-          <label>Email</label>
+          <input type="text" id="email" required>
+          <label for="email">Email</label>
         </div>
+
         <div class="input-field">
-          <input type="password" required>
-          <label>Jelszó</label>
+          <input type="password" id="password" required>
+          <label for="password">Jelszó</label>
         </div>
+
         <div class="forget">
           <label for="remember">
             <input type="checkbox" id="remember">
             <p>Emlékezz rá</p>
           </label>
+
           <a href="forget_pasword.html">Elfelejtette jelszavát?</a>
         </div>
-        <button type="submit">Bejelentkezés</button>
+        <button type="submit" id="submit">Bejelentkezés</button>
         <div class="register">
           <p>Nincsen fiókja? <a href="registration.html">Regisztrálj most!</a></p>
         </div>
-     
-
-      
+        
       </form>
     </div>
-  </body>
+  
+    
+
+    <script src="login.js"></script>
+
+</body>
 </html>

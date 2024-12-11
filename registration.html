@@ -10,6 +10,7 @@
     <title>Grillezett Álom</title>
 </head>
 <body>
+<<<<<<< HEAD
   <div class="wrapper">
       <div id="response"></div>
       <form id="RegistrationForm">
@@ -19,16 +20,55 @@
         <div class="input-field">
           <input type="text" id="lastname" name="lastname" required>
           <label>Vezetéknév</label>
-        </div>
+=======
+    <div class="wrapper">
+      <!-- Form with ID for JS to handle -->
+<<<<<<< HEAD
+      <div id="response"></div>
+      <form id="RegistrationForm" method="POST">
+        <a href="main.html" id="back"><i class="material-icons" style="font-size: 25px">close</i></a>
+       <img src="photos/logo.png" width="100%">
+=======
+      <form id="RegistrationForm">
+        <a href="main.html" id="back"><i class="material-icons" style="font-size: 25px">close</i></a>
+        <a href="main.html"><img src="photos/logo.png" width="100%"></a>
+>>>>>>> 361c64e8de4363b271e7cbc2351409d435775b04
+        
+        <!-- Last name field -->
         <div class="input-field">
+          <input type="text" id="lastname" required>
+          <label for="lastname">Vezetéknév</label>
+>>>>>>> 572b8490850c75a57724ebfaa346a69ada469e4a
+        </div>
+        
+        <!-- First name field -->
+        <div class="input-field">
+<<<<<<< HEAD
           <input type="text" id="firstname" name="firstname" required>
           <label>Keresztnév</label>
+=======
+          <input type="text" id="firstname" required>
+          <label for="firstname">Keresztnév</label>
+>>>>>>> 572b8490850c75a57724ebfaa346a69ada469e4a
         </div>
+        
+        <!-- Email field -->
         <div class="input-field">
+<<<<<<< HEAD
           <input type="email" id="email" name="email" required>
           <label>Email</label>
+=======
+<<<<<<< HEAD
+          <input type="text" id="email" required>
+=======
+          <input type="email" id="email" required>
+>>>>>>> 361c64e8de4363b271e7cbc2351409d435775b04
+          <label for="email">Email</label>
+>>>>>>> 572b8490850c75a57724ebfaa346a69ada469e4a
         </div>
+        
         <div class="input-field">
+<<<<<<< HEAD
           <input type="number" id="zipcode" name="zipcode" required>
           <label>Zipcode</label>
         </div>
@@ -46,13 +86,99 @@
         </div>
        
         <button type="submit" name="submit">Regisztrálás</button>
-        <div class="register">
-          <p>Van már fiókja?   <a href="login.html">Jelentkezzen be!</a></p>
+=======
+<<<<<<< HEAD
+          <input type="number" id="zipcode" required>
+          <label for="zipcode">zipcode</label>
         </div>
+
+        <div class="input-field">
+          <input type="text" id="city" required>
+          <label for="city">city</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" id="address" required>
+          <label for="address">address</label>
+        </div>
+
+        <!-- Password field -->
+        <div class="input-field">
+          <input type="password" id="password" required>
+          <label for="password">Jelszó</label>
+        </div>
+        
+       
+        
+        <!-- Submit button to trigger form submission -->
+        <button type="submit" name="submit" id="submit">Regisztrálás</button>
+        
+        <!-- Login link for existing users -->
+        <div class="register">
+          <p>Van már fiókja? <a href="login.html">Jelentkezzen be!</a></p>
+        </div>
+
+        
+        
+      </form>
+    </div>
+
+    
+    <script src="registration.js"></script>
+=======
+          <input type="text" id="zipcode" required>
+          <label for="lastname">zipcode</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" id="city" required>
+          <label for="lastname">city</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" id="address" required>
+          <label for="lastname">address</label>
+        </div>
+
+        <!-- Password field -->
+        <div class="input-field">
+          <input type="password" id="password" required>
+          <label for="password">Jelszó</label>
+        </div>
+        
+        <!-- Remember me checkbox (optional) -->
+        <div class="forget">
+          <label for="remember">
+            <input type="checkbox" id="remember">
+            <p>Emlékezz rá</p>
+          </label>
+        </div>
+        
+        <!-- Submit button to trigger form submission -->
+        <button type="submit">Regisztrálás</button>
+        
+        <!-- Login link for existing users -->
+>>>>>>> 572b8490850c75a57724ebfaa346a69ada469e4a
+        <div class="register">
+          <p>Van már fiókja? <a href="login.html">Jelentkezzen be!</a></p>
+        </div>
+<<<<<<< HEAD
       </form>
     </div>
   </body>
 
   <script src="registration.js"></script>
 
+=======
+
+        <!-- Response message will be displayed here -->
+        <div id="response"></div>
+      </form>
+    </div>
+
+    <!-- Link to your JavaScript file to handle the registration logic -->
+    <script src="register.js"></script>
+>>>>>>> 361c64e8de4363b271e7cbc2351409d435775b04
+</body>
+>>>>>>> 572b8490850c75a57724ebfaa346a69ada469e4a
 </html>

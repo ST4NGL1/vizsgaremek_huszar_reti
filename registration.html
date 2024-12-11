@@ -10,41 +10,49 @@
     <title>Grillezett Álom</title>
 </head>
 <body>
-    <div class="wrapper">
-      <form action="#">
+  <div class="wrapper">
+      <div id="response"></div>
+      <form id="RegistrationForm">
         <a href="main.html" id="back"><i class="material-icons" style="font-size: 25px">close</i></a>
         <a href="main.html"><img src="photos/logo.png" width="100%"></a>
+       
         <div class="input-field">
-          <input type="text" required >
+          <input type="text" id="lastname" name="lastname" required>
           <label>Vezetéknév</label>
         </div>
         <div class="input-field">
-          <input type="text" required>
+          <input type="text" id="firstname" name="firstname" required>
           <label>Keresztnév</label>
         </div>
         <div class="input-field">
-          <input type="text" required>
+          <input type="email" id="email" name="email" required>
           <label>Email</label>
         </div>
         <div class="input-field">
-          <input type="password" required>
+          <input type="number" id="zipcode" name="zipcode" required>
+          <label>Zipcode</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="city" name="city" required>
+          <label>City</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="address" name="address" required>
+          <label>Address</label>
+        </div>
+        <div class="input-field">
+          <input type="password" id="password" name="password" required>
           <label>Jelszó</label>
         </div>
-        <div class="forget">
-          <label for="remember">
-            <input type="checkbox" id="remember">
-            <p>Emlékezz rá</p>
-          </label>
-          
-        </div>
-        <button type="submit">Regisztrálás</button>
+       
+        <button type="submit" name="submit">Regisztrálás</button>
         <div class="register">
           <p>Van már fiókja?   <a href="login.html">Jelentkezzen be!</a></p>
         </div>
-     
-
-      
       </form>
     </div>
   </body>
+
+  <script src="registration.js"></script>
+
 </html>

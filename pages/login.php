@@ -103,8 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col mb-2 mt-4">
                 <p class="text-center" 
                   style="font-weight: 600; color: navy;"
-                  ><a href="./register.php"
-                        style="text-decoration: none;">Create Account</a> OR <a href="./resetpassword.php"
+                  ><a href="../html/register.html"
+                        style="text-decoration: none;">Create Account</a> OR <a href="./html/register.html"
                         style="text-decoration: none;">Forgot Password</a></p>
             </div>
         </form>

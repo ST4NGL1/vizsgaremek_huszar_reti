@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-header('Content-Type: application/json');
+$data = json_decode(file_get_contents('php://input'), true);
 
 require_once 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = json_decode(file_get_contents('php://input'), true);
+    header('Content-Type: application/json');
 
     // Get input values
     $email = $data['email'] ?? '';

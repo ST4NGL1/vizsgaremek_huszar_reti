@@ -3,8 +3,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     event.preventDefault();
     
     const formDataa = {
-        email: document.getElementById('lo_email').value,
-        password: document.getElementById('lo_password').value
+        email: document.getElementById('Email').value,
+        password: document.getElementById('Password').value
     };
 
     fetch('../Assets/php/login.php', {
@@ -18,7 +18,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .then(data => {
         
         if (data.success) {
-            window.location.href = "../views/Fooldal.html";
+            window.location.href = "../Views/home.html";
             console.log("Sikeres bejelentkezés",data.user_id);
         }
         else {

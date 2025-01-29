@@ -78,7 +78,7 @@ body {
 }
 
 .header {
-  background-image: url("photos/header.jpg");
+  background-image: url("../images/header.jpg");
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -331,25 +331,10 @@ nav {
   gap: 1rem;
 }
 
-.reservation__container input {
-  padding: 0.75rem 1rem;
-  outline: none;
-  border: 1px solid var(--text-dark);
-  font-size: 1rem;
-  color: var(--text-dark);
-  border-radius: 1rem;
-}
 
-.reservation__container input::placeholder {
-  color: var(--text-dark);
-}
-
-.reservation img {
-  display: none;
-}
 
 .footer {
-  background-image: url("photos/footer.jpg");
+  background-image: url("../images/footer.jpg");
   background-position: center center;
   background-size:cover;
   background-repeat: no-repeat;
@@ -522,28 +507,7 @@ nav {
     text-align: left;
   }
 
-  .reservation__container form {
-    max-width: 600px;
-    grid-template-columns: repeat(2, 1fr);
-  }
 
-  .reservation img {
-    display: flex;
-    position: absolute;
-    z-index: -1;
-  }
-
-  .reservation__bg-1 {
-    left: 0;
-    top: 0;
-    width: clamp(100px, 25vw, 350px);
-  }
-
-  .reservation__bg-2 {
-    right: 0;
-    bottom: 0;
-    width: clamp(100px, 20vw, 250px);
-  }
 
   .footer__content {
     grid-template-columns: repeat(2, 1fr);

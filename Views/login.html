@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="shortcut icon" href="../Assets/images/logo.png">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Grillezett Álom</title>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="row w-100 justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div id="toast-container"></div>
+                <form id="loginForm">
+
+                    <div class="text-center mb-4">
+                        <a href="../Views/home.html"><img src="../Assets/images/logo.png" alt="Logo" class="img-fluid" style="max-width: 250px;"></a>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="form-label"><i class="fa fa-envelope"></i> Email</label>
+                        <input type="email" name="Email" id="Email" class="form-control" required aria-label="Email">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label"><i class="fa fa-lock"></i> Jelszó</label>
+                        <input type="password" name="password" id="Password" class="form-control" required aria-label="Password">
+                    </div>
+
+                    <div class="d-grid gap-2 mb-3">
+                        <button type="submit" id="Create">Bejelentkezés</button>
+                    </div>
+
+                    <div class="text-center">
+                        <p>Még nincs fiókom 
+                            <a href="../Views/register.html" style="text-decoration: none;">Regisztrálok</a>
+                            
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../Assets/js/login.js"></script>
+</body>
+
+</html>

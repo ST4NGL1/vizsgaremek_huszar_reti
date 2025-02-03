@@ -9,12 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lastname = $data['lastname'] ?? '';
     $firstname = $data['firstname'] ?? '';
     $email = $data['email'] ?? '';
-    $zipcode = $data['zipcode'] ?? '';
-    $city = $data['city'] ?? '';
-    $address = $data['address'] ?? '';
     $password = $data['password'] ?? '';
 
-    if (empty($lastname) || empty($firstname)|| empty($email) || empty($zipcode) ||empty($city) || empty($city) || empty($address) || empty($password)) {
+    if (empty($lastname) || empty($firstname)|| empty($email) || empty($password)) {
         echo json_encode(['error' => 'All fields are required']);
         exit;
     }
@@ -31,14 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Insert the new user into the database
-    $stmt = $pdo->prepare('INSERT INTO users (lastname,firstname, email,zipcode,city,address, password) VALUES (:lastname,:firstname, :email,:zipcode,:city,:address, :password)');
+    $stmt = $pdo->prepare('INSERT INTO users (lastname,firstname, email, password) VALUES (:lastname,:firstname, :email, :password)');
     $stmt->execute([
         'lastname' => $lastname,
         'firstname'=>$firstname,
         'email' => $email,
-        'zipcode' =>$zipcode,
-        'city'=>$city,
-        'address'=>$address,
         'password' => $hashed_password
     ]);
 

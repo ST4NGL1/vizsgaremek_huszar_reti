@@ -7,7 +7,7 @@ require_once 'db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
-
+    
     // Get input values
     $email = $data['email'] ?? '';
     $password = $data['password'] ?? '';
@@ -41,5 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'user_id' => $_SESSION['user_id'],
         'email' => $_SESSION['email']
     ]);
+   
 }
 ?>

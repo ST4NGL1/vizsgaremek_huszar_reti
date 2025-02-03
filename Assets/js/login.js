@@ -2,9 +2,9 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    const formDataa = {
-        email: document.getElementById('Email').value,
-        password: document.getElementById('Password').value
+    const formData = {
+        email: document.getElementById('login_Email').value,
+        password: document.getElementById('login_Password').value
     };
 
     fetch('../Assets/php/login.php', {
@@ -12,11 +12,12 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formDataa)
+        body: JSON.stringify(formData)
     })
     .then(response => response.json())
     .then(data => {
-        
+       
+
         if (data.success) {
             window.location.href = "../Views/home.html";
             console.log("Sikeres bejelentkezés",data.user_id);

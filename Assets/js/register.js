@@ -5,9 +5,6 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         lastname: document.getElementById('Lastname').value,
         firstname: document.getElementById('Firstname').value,
         email: document.getElementById('Email').value,
-        zipcode: document.getElementById('Zipcode').value,
-        city: document.getElementById('City').value,
-        address: document.getElementById('Address').value,
         password: document.getElementById('Password').value
     };
 

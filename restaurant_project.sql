@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Dec 04. 12:29
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Létrehozás ideje: 2025. Feb 03. 13:10
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -84,11 +84,17 @@ CREATE TABLE `users` (
   `LASTNAME` varchar(50) NOT NULL,
   `FIRSTNAME` varchar(50) NOT NULL,
   `EMAIL` varchar(80) NOT NULL,
-  `ZIPCODE` int(4) NOT NULL,
-  `CITY` varchar(50) NOT NULL,
-  `ADDRESS` varchar(80) NOT NULL,
-  `PASSWORD` varchar(50) NOT NULL
+  `PASSWORD` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `users`
+--
+
+INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PASSWORD`) VALUES
+(7, 'ez', 'egy', 'fos@gmail.com', '$2y$10$US7h6r4ohG5NxUAr9gwKPunkEuT9swE1kfENKWDNLPe8Mii6CfwLm'),
+(8, 'kis', 'buzi', 'buzi@gmail.com', '$2y$10$18oNQxTnTzuljb3Mal1XeOH0Fcjpy16qpJuXhwzbJtje4uYj.6Zty'),
+(9, 'reti', 'aldalék', 'skdasdéa@gmail.com', '$2y$10$xIRUlpjsEnnwhcxc5dFnTOttotDnddj64XLQPBIKKx/IuqUBf1XNW');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -147,7 +153,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Megkötések a kiírt táblákhoz

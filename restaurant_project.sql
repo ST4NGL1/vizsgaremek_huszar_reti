@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 03. 13:10
+-- Létrehozás ideje: 2025. Feb 04. 13:01
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -73,6 +73,13 @@ CREATE TABLE `menu` (
   `PRICE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- A tábla adatainak kiíratása `menu`
+--
+
+INSERT INTO `menu` (`ITEMID`, `CATEGORIEID`, `NAME`, `DESCRIPTION`, `PHOTO`, `PRICE`) VALUES
+(1, 7, 'Signature Ribeye Steak', 'Juicy, tender, and bursting with flavor.\r\nExperience the perfect marbling and smoky char of our hand-selected Ribeye Steak. Aged to perfection for 21 days, this prime cut is grilled to your preference and served with your choice of rich garlic butter', '/photos/menu_steak.jpg', 5500);
+
 -- --------------------------------------------------------
 
 --
@@ -84,17 +91,16 @@ CREATE TABLE `users` (
   `LASTNAME` varchar(50) NOT NULL,
   `FIRSTNAME` varchar(50) NOT NULL,
   `EMAIL` varchar(80) NOT NULL,
-  `PASSWORD` varchar(300) NOT NULL
+  `PASSWORD` varchar(300) NOT NULL,
+  `PHONENUMBER` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PASSWORD`) VALUES
-(7, 'ez', 'egy', 'fos@gmail.com', '$2y$10$US7h6r4ohG5NxUAr9gwKPunkEuT9swE1kfENKWDNLPe8Mii6CfwLm'),
-(8, 'kis', 'buzi', 'buzi@gmail.com', '$2y$10$18oNQxTnTzuljb3Mal1XeOH0Fcjpy16qpJuXhwzbJtje4uYj.6Zty'),
-(9, 'reti', 'aldalék', 'skdasdéa@gmail.com', '$2y$10$xIRUlpjsEnnwhcxc5dFnTOttotDnddj64XLQPBIKKx/IuqUBf1XNW');
+INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PASSWORD`, `PHONENUMBER`) VALUES
+(3, 'Apád', 'cigany', 'cig@gmail.com', '$2y$10$vC0pa1FHERZEFFSwiXpKAONns/Lt/3JyR0dmb95o77x/S7u9m/ecC', 0);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -147,13 +153,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT a táblához `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `ITEMID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ITEMID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Megkötések a kiírt táblákhoz

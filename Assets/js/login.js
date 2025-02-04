@@ -6,7 +6,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         email: document.getElementById('login_Email').value,
         password: document.getElementById('login_Password').value
     };
-
+    console.log('Form Data:', formData); 
     fetch('../Assets/php/login.php', {
         method: 'POST',
         headers: {

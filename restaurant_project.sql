@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 04. 13:01
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- Gép: localhost
+-- Létrehozás ideje: 2025. Feb 05. 13:47
+-- Kiszolgáló verziója: 10.4.28-MariaDB
+-- PHP verzió: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `restaurant_project`
+-- Adatbázis: `restaurant_project2`
 --
 
 -- --------------------------------------------------------
@@ -29,34 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cart` (
   `CARTID` int(11) NOT NULL,
-  `USERID` int(11) NOT NULL,
-  `ITEMID` int(11) NOT NULL
+  `ITEMID` int(11) NOT NULL,
+  `USERID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Tábla szerkezet ehhez a táblához `categories`
---
-
-CREATE TABLE `categories` (
-  `CATEGORIEID` int(11) NOT NULL,
-  `CATEGORIENAME` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `categories`
---
-
-INSERT INTO `categories` (`CATEGORIEID`, `CATEGORIENAME`) VALUES
-(4, 'Előételek'),
-(5, 'Levesek'),
-(6, 'Hamburgerek'),
-(7, 'Frissen sültek'),
-(8, 'Köretek'),
-(9, 'Saláták'),
-(10, 'Italok'),
-(11, 'Desszertek');
 
 -- --------------------------------------------------------
 
@@ -65,20 +40,23 @@ INSERT INTO `categories` (`CATEGORIEID`, `CATEGORIENAME`) VALUES
 --
 
 CREATE TABLE `menu` (
-  `ITEMID` int(11) NOT NULL,
-  `CATEGORIEID` int(11) NOT NULL,
-  `NAME` varchar(50) NOT NULL,
-  `DESCRIPTION` varchar(250) NOT NULL,
-  `PHOTO` varchar(100) NOT NULL,
-  `PRICE` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `category` varchar(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `menu`
 --
 
-INSERT INTO `menu` (`ITEMID`, `CATEGORIEID`, `NAME`, `DESCRIPTION`, `PHOTO`, `PRICE`) VALUES
-(1, 7, 'Signature Ribeye Steak', 'Juicy, tender, and bursting with flavor.\r\nExperience the perfect marbling and smoky char of our hand-selected Ribeye Steak. Aged to perfection for 21 days, this prime cut is grilled to your preference and served with your choice of rich garlic butter', '/photos/menu_steak.jpg', 5500);
+INSERT INTO `menu` (`id`, `name`, `category`, `price`) VALUES
+(1, 'Margherita Pizza', 'Pizza', 12.99),
+(2, 'Pepperoni Pizza', 'Pizza', 14.99),
+(3, 'Caesar Salad', 'Salad', 9.99),
+(4, 'Greek Salad', 'Salad', 8.99),
+(5, 'Spaghetti Carbonara', 'Pasta', 13.99),
+(6, 'Lasagna', 'Pasta', 15.99);
 
 -- --------------------------------------------------------
 
@@ -88,19 +66,12 @@ INSERT INTO `menu` (`ITEMID`, `CATEGORIEID`, `NAME`, `DESCRIPTION`, `PHOTO`, `PR
 
 CREATE TABLE `users` (
   `USERID` int(11) NOT NULL,
-  `LASTNAME` varchar(50) NOT NULL,
-  `FIRSTNAME` varchar(50) NOT NULL,
-  `EMAIL` varchar(80) NOT NULL,
-  `PASSWORD` varchar(300) NOT NULL,
-  `PHONENUMBER` int(11) NOT NULL
+  `LASTNAME` varchar(250) NOT NULL,
+  `FIRSTNAME` varchar(250) NOT NULL,
+  `EMAIL` varchar(300) NOT NULL,
+  `PHONENUMBER` int(11) NOT NULL,
+  `PASSWORD` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- A tábla adatainak kiíratása `users`
---
-
-INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PASSWORD`, `PHONENUMBER`) VALUES
-(3, 'Apád', 'cigany', 'cig@gmail.com', '$2y$10$vC0pa1FHERZEFFSwiXpKAONns/Lt/3JyR0dmb95o77x/S7u9m/ecC', 0);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -111,21 +82,14 @@ INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PASSWORD`, `PH
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`CARTID`),
-  ADD KEY `USERID` (`USERID`),
-  ADD KEY `ITEMID` (`ITEMID`);
-
---
--- A tábla indexei `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`CATEGORIEID`);
+  ADD KEY `ITEMID` (`ITEMID`),
+  ADD KEY `USERID` (`USERID`);
 
 --
 -- A tábla indexei `menu`
 --
 ALTER TABLE `menu`
-  ADD PRIMARY KEY (`ITEMID`),
-  ADD KEY `CATEGORIEID` (`CATEGORIEID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- A tábla indexei `users`
@@ -144,22 +108,16 @@ ALTER TABLE `cart`
   MODIFY `CARTID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT a táblához `categories`
---
-ALTER TABLE `categories`
-  MODIFY `CATEGORIEID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT a táblához `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `ITEMID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -169,14 +127,8 @@ ALTER TABLE `users`
 -- Megkötések a táblához `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`USERID`) REFERENCES `users` (`USERID`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`ITEMID`) REFERENCES `menu` (`ITEMID`);
-
---
--- Megkötések a táblához `menu`
---
-ALTER TABLE `menu`
-  ADD CONSTRAINT `menu_ibfk_1` FOREIGN KEY (`CATEGORIEID`) REFERENCES `categories` (`CATEGORIEID`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`ITEMID`) REFERENCES `menu` (`id`),
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`USERID`) REFERENCES `users` (`USERID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

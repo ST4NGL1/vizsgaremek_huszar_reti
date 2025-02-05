@@ -152,6 +152,7 @@ body {
   width: 100%;
   margin: 10px 0;
   position: relative;
+
 }
 
 .form-content .input-box input {
@@ -203,6 +204,7 @@ body {
   padding: 0;
   cursor: pointer;
   transition: all 0.4s ease;
+
 }
 
 .forms .form-content .button input:hover {

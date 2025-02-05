@@ -5,8 +5,10 @@
     <link rel="stylesheet" href="../Assets/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+  </head>
+   
 <body>
+  
   <div class="container">
     <input type="checkbox" id="flip">
     <div class="cover">
@@ -26,58 +28,69 @@
       </div>
     </div>
     <div class="forms">
-      <a href="home.html"><img src="../Assets/images/svgs/cross-mark-svgrepo-com.svg" alt="" style="height: 20px;" title="Kilépés a főoldalra"></a>
         <div class="form-content">
           <div class="login-form">
             <div class="title">Bejelentkezés</div>
-          <form id="loginForm">
-            <div class="input-boxes">
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" id="login_Email" placeholder="Email cím" required title="Írja be email címét">
+            <form id="loginForm">
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input type="text" id="login_Email" placeholder="Email cím" required title="Írja be email címét">
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" id="login_Password" placeholder="Jelszó" required title="Írja be jelszavát">
+                </div>
+                <div class="text"><a href="#" style="text-decoration: none; color: #722F37;" >Elfelejtette jelszavát?</a></div>
+                <div class="button input-box">
+                  <input type="submit" value="Bejelentkezés" title="Bejelentkezés">
+                </div>
+                <div class="text sign-up-text">Még nincsen fiókja? <label for="flip">Regisztráljon most</label></div>
               </div>
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="login_Password" login_Email placeholder="Jelszó" required title="Írja be jelszavát">
-              </div>
-              <div class="text"><a href="#" style="text-decoration: none; color: #722F37;" >Elfelejtette jelszavát?</a></div>
-              <div class="button input-box">
-                <input type="submit" value="Bejelentkezés" title="Bejelentkezés">
-              </div>
-              <div class="text sign-up-text">Még nincsen fiókja? <label for="flip">Regisztráljon most</label></div>
+            </form>
+            
+            <!-- Kilépés gomb -->
+            <div class="button input-box">
+              
             </div>
-        </form>
-      </div>
-        <div class="signup-form">
-          <div class="title">Regisztráció</div>
-        <form id="registrationForm">
-            <div class="input-boxes">
-              <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" id="Lastname" placeholder="Vezetéknév" required title="Írja be vezetéknevét">
+            <center><a href="home.html"><img src="../Assets/images/svgs/home-svgrepo-com.svg" style="width: 60px;" alt=""></a></center>
+          </div>
+
+          <div class="signup-form">
+            <div class="title">Regisztráció</div>
+            <form id="registrationForm">
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="Lastname" placeholder="Vezetéknév" required title="Írja be vezetéknevét">
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-user"></i>
+                  <input type="text" id="Firstname" placeholder="Keresztnév" required title="Írja be keresztnevét">
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input type="text" id="Email" placeholder="Email cím" required title="Írja be email címét">
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" id="Password" placeholder="Jelszó" required title="Írja be jelszavát">
+                </div>
+                <div class="button input-box">
+                  <input type="submit" value="Regisztráció" title="Regisztrálás">
+                </div>
+                <div class="text sign-up-text">Már van fiókja <label for="flip">Jelentkezzen be</label></div>
               </div>
-              <div class="input-box">
-                <i class="fas fa-user"></i>
-                <input type="text" id="Firstname" placeholder="Keresztnév" required title="Írja be keresztnevét">
-              </div>
-              <div class="input-box">
-                <i class="fas fa-envelope"></i>
-                <input type="text" id="Email" placeholder="Email cím" required title="Írja be email címét">
-              </div>
-              <div class="input-box">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="Password" placeholder="Jelszó" required title="Írja be jelszavát">
-              </div>
-              <div class="button input-box">
-                <input type="submit" value="Regisztráció" title="Regisztrálás">
-              </div>
-              <div class="text sign-up-text">Már van fiókja <label for="flip">Jelentkezzen be</label></div>
+            </form>
+            <!-- Kilépés gomb -->
+            <div class="button input-box">
             </div>
-      </form>
-    </div>
-    </div>
+            <center><a href="home.html"><img src="../Assets/images/svgs/home-svgrepo-com.svg" style="width: 60px;" alt=""></a></center>
+          </div>
+        </div>
     </div>
   </div>
+  
   <script src="../Assets/js/login.js"></script>
   <script src="../Assets/js/register.js"></script>
 </body>

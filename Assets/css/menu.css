@@ -4,15 +4,29 @@
 }
 
 body{
-    background-image:url('../images/login.jpg') ;
+    background-image:url('../images/menu_bg.jpg') ;
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+h1{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding-bottom: 25px;
+}
+
+hr{
+    opacity: 0.4;
 }
 
 #main{
     width: 65%;
     margin: auto;
-    background-color: rgb(255, 0, 0);
-    border: solid 1px black;
-    border-radius: 25px;
+    background-color: rgba(248, 248, 248, 0.617);   
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
     padding: 35px;
 }
 

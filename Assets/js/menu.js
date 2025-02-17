@@ -1,5 +1,3 @@
-
-
 fetch('../Assets/php/menu.php')
     .then(response => response.json())
     .then(data => {
@@ -24,7 +22,19 @@ fetch('../Assets/php/menu.php')
             groupedMenu[category].forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('menu-item');
-                itemDiv.innerText = `${item.name} - $${item.price}`;
+                itemDiv.innerText = `${item.name} (${item.description})  ${item.price}Ft`;
+
+                // Create a button for each menu item
+                const orderButton = document.createElement('button');
+                orderButton.classList.add('order-button');
+                orderButton.innerText = 'Kosárba';
+
+                // Add event listener for the button
+                orderButton.addEventListener('click', () => {
+                    alert(`Megrendelted: ${item.name}`);
+                });
+
+                itemDiv.appendChild(orderButton);
                 menuContainer.appendChild(itemDiv);
             });
         }

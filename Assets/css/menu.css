@@ -35,8 +35,14 @@ hr{
 }
 
 .category{
-    font-size: 35px;
+    font-size: 40px;
     border-bottom: 2px solid black;
 }
 
+.menu-item{
+    
+    border-bottom: 1px black dotted;
+    padding: 15px;
+    font-size: 30px;
+}
 

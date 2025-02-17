@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: localhost
--- Létrehozás ideje: 2025. Feb 05. 13:47
--- Kiszolgáló verziója: 10.4.28-MariaDB
--- PHP verzió: 8.2.4
+-- Gép: 127.0.0.1
+-- Létrehozás ideje: 2025. Feb 17. 13:20
+-- Kiszolgáló verziója: 10.4.32-MariaDB
+-- PHP verzió: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `restaurant_project2`
+-- Adatbázis: `restaurant_project`
 --
 
 -- --------------------------------------------------------
@@ -42,21 +42,17 @@ CREATE TABLE `cart` (
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
   `category` varchar(100) NOT NULL,
-  `price` decimal(10,2) NOT NULL
+  `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- A tábla adatainak kiíratása `menu`
 --
 
-INSERT INTO `menu` (`id`, `name`, `category`, `price`) VALUES
-(1, 'Margherita Pizza', 'Pizza', 12.99),
-(2, 'Pepperoni Pizza', 'Pizza', 14.99),
-(3, 'Caesar Salad', 'Salad', 9.99),
-(4, 'Greek Salad', 'Salad', 8.99),
-(5, 'Spaghetti Carbonara', 'Pasta', 13.99),
-(6, 'Lasagna', 'Pasta', 15.99);
+INSERT INTO `menu` (`id`, `name`, `description`, `category`, `price`) VALUES
+(9, 'Classic burger', 'buci,huspogacsa,pacsaridom,kecsup', 'Hamburgerek', 2000);
 
 -- --------------------------------------------------------
 
@@ -111,7 +107,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT a táblához `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT a táblához `users`

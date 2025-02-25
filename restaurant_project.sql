@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 17. 13:20
+-- Létrehozás ideje: 2025. Feb 25. 13:29
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -52,7 +52,25 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `name`, `description`, `category`, `price`) VALUES
-(9, 'Classic burger', 'buci,huspogacsa,pacsaridom,kecsup', 'Hamburgerek', 2000);
+(7, 'BBQ Szárnyak', 'Fűszeres, mézes-barbecue szósszal, friss zöldségekkel', 'Előétel', 1500),
+(8, 'Rántott Jalapeño', 'Töltött jalapeño paprikák, cheddar sajttal, házi BBQ szószban', 'Előétel', 1200),
+(9, 'Sült Kacsamájas Toast', 'Fűszeres BBQ szószban sült kacsamáj, ropogós kenyéren', 'Előétel', 1800),
+(10, 'Grillezett Kukorica', 'Fűszeres vajjal és barbecue pácban grillezve', 'Előétel', 900),
+(11, 'Szenvedélyes BBQ Ribs', 'Túlzsúfolt rib-eye bordák, házi BBQ szósszal, körettel', 'Főétel', 3800),
+(12, 'Smokehouse Brisket', 'Füstölt marhahús, lassú tűzön sült, szaftos, házi BBQ szószban', 'Főétel', 4000),
+(13, 'Grillezett BBQ Csirke', 'Szaftos csirkemell, fűszeres BBQ pácban grillezve', 'Főétel', 2800),
+(14, 'Pulled Pork Sandwich', 'Hosszú ideig füstölt sertéshús, BBQ szószban, friss zsemlében', 'Főétel', 2500),
+(15, 'Vegán BBQ Tál', 'Füstölt zöldségek, grillezett tofuszeletek és házi BBQ szósz', 'Főétel', 2700),
+(16, 'Coleslaw Saláta', 'Friss káposzta, sárgarépa és joghurtos öntet', 'Köret', 800),
+(17, 'Fűszeres Párizsi Burgonya', 'Sült burgonya fokhagymás fűszerrel, BBQ szószban', 'Köret', 950),
+(18, 'Grillezett Zöldségek', 'Paprika, cukkini, gomba és hagyma, grillezve', 'Köret', 1100),
+(19, 'Sült Kukorica', 'Fűszeres vajjal, lime-mal', 'Köret', 900),
+(20, 'BBQ Füstölt Almás Pite', 'Meleg füstölt almás pite vaníliafagylalttal', 'Desszert', 1500),
+(21, 'Choco-BBQ Brownie', 'Csokis brownie BBQ karamellel és vanília krémmel', 'Desszert', 1600),
+(22, 'Lemonade & Ice Tea', 'Friss házi limonádé és jeges tea', 'Ital', 600),
+(23, 'Házi Üdítők', 'Házilag készített szénsavas üdítők', 'Ital', 500),
+(24, 'Kézműves Sörök', 'Válogatott helyi sörök', 'Ital', 800),
+(25, 'BBQ Koktélok', 'Speciális koktélok, mint például a \"Smoky Margarita\" vagy \"BBQ Mojito\"', 'Ital', 1200);
 
 -- --------------------------------------------------------
 
@@ -107,7 +125,7 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT a táblához `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT a táblához `users`

@@ -27,7 +27,16 @@ fetch('../Assets/php/menu.php')
                 // Create a button for each menu item
                 const orderButton = document.createElement('button');
                 orderButton.classList.add('order-button');
-                orderButton.innerText = 'Kosárba';
+
+                // Create an <img> tag for the downloaded SVG icon
+                const svgIcon = document.createElement('img');
+                svgIcon.src = '../Assets/images/svgs/cart.svg'; // Replace with the correct path
+                svgIcon.alt = 'Cart Icon';
+                svgIcon.style.width = '30px'; // Adjust size if necessary
+                svgIcon.style.height = '30px'; // Adjust size if necessary
+
+                // Append the SVG image to the button
+                orderButton.appendChild(svgIcon);
 
                 // Add event listener for the button
                 orderButton.addEventListener('click', () => {

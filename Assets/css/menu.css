@@ -5,9 +5,8 @@
 
 body{
     background-image:url('../images/menu.jpg') ;
+    background-size: auto;
     
-    background-size: cover;
-    background: no-repeat;
     
     
 }
@@ -56,3 +55,5 @@ hr{
     border-radius: 10px;
     background-color: rgb(255, 0, 0);
 }
+
+

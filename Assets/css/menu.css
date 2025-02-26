@@ -5,8 +5,9 @@
 
 body{
     background-image:url('../images/menu.jpg') ;
-    background-repeat: no-repeat;
+    
     background-size: cover;
+    background: no-repeat;
     
     
 }

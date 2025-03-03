@@ -4,12 +4,21 @@
 }
 
 body{
+    
     background-image:url('../images/menu.jpg') ;
     background-size: auto;
     
     
     
+    
 }
+
+.tangerine-bold {
+    font-family: "Tangerine", cursive;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
 
 h1{
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -20,7 +29,9 @@ h1{
 }
 
 hr{
-    opacity: 0.4;
+    
+    border: 1px solid black;
+    
 }
 
 #main{
@@ -42,10 +53,9 @@ hr{
 }
 
 .menu-item{
-    
+    font-size: 20px;
     border-bottom: 1px black dotted;
     padding: 15px;
-    font-size: 30px;
 }
 
 .order-button{
@@ -53,7 +63,8 @@ hr{
     padding: 5px;
     border: none;
     border-radius: 10px;
-    background-color: rgb(255, 0, 0);
+    background-color: #722f3700;
+    float: inline-end;
 }
 
 

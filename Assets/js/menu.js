@@ -14,6 +14,7 @@ fetch('../Assets/php/menu.php')
 
         for (const category in groupedMenu) {
             const categoryDiv = document.createElement('div');
+            categoryDiv.classList.add('tangerine-bold');
             categoryDiv.classList.add('category');
             categoryDiv.innerText = category;
 
@@ -21,6 +22,7 @@ fetch('../Assets/php/menu.php')
 
             groupedMenu[category].forEach(item => {
                 const itemDiv = document.createElement('div');
+                itemDiv.classList.add('tangerine-bold');
                 itemDiv.classList.add('menu-item');
                 itemDiv.innerText = `${item.name} (${item.description})  ${item.price}Ft`;
 
@@ -33,7 +35,8 @@ fetch('../Assets/php/menu.php')
                 svgIcon.src = '../Assets/images/svgs/cart.svg'; // Replace with the correct path
                 svgIcon.alt = 'Cart Icon';
                 svgIcon.style.width = '30px'; // Adjust size if necessary
-                svgIcon.style.height = '30px'; // Adjust size if necessary
+                svgIcon.style.height = '30px';
+                 // Adjust size if necessary
 
                 // Append the SVG image to the button
                 orderButton.appendChild(svgIcon);

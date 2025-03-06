@@ -530,3 +530,22 @@ nav {
 
 }
 
+.menu_fact 
+{
+   text-align: center;
+   line-height: 2.5;
+   color: black;
+   font-style: normal;
+   font-weight: bolder;
+   
+
+}
+
+#menu_svg
+{
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  color: white;
+}
+

@@ -533,7 +533,7 @@ nav {
 .menu_fact 
 {
    text-align: center;
-   line-height: 2.5;
+   /* line-height: 2.5; */
    color: black;
    font-style: normal;
    font-weight: bolder;

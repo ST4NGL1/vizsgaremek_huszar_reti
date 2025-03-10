@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="view-transition" content="same-origin">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"rel="stylesheet"/>
-    <link rel="stylesheet" href="../Assets/css/home.css" />
+    <link rel="stylesheet" href="../Assets/css/home.css" /> 
+    <link rel="stylesheet" href="../Assets/css/slideshow.css">
+    <script src="../Assets/js/slideshow.js"></script>
     <title>Grillezett Álom</title>
   </head>
   <body>
@@ -79,19 +81,103 @@
    
 
 
+    <section>
+     <!-- Container for the image gallery -->
+<div class="container">
 
-    <section class="section__container" id="menu" style="background-color: #eebc7a;">
+  <!-- Full-width images with number text -->
+  <div class="mySlides">
+    <div class="numbertext">1 / 6</div>
+      <img src="../Assets/images/header.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">2 / 6</div>
+      <img src="../Assets/images/header.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">3 / 6</div>
+      <img src="../Assets/images/header.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">4 / 6</div>
+      <img src="../Assets/images/header.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">5 / 6</div>
+      <img src="../Assets/images/header.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides">
+    <div class="numbertext">6 / 6</div>
+      <img src="../Assets/images/header.jpg" style="width:100%">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+  <!-- Image text -->
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <!-- Thumbnail images -->
+  <div class="row">
+    <div class="column">
+      <img class="demo cursor" src="../Assets/images/header.jpg" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../Assets/images/header.jpg" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../Assets/images/header.jpg" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../Assets/images/header.jpg" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../Assets/images/header.jpg" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+    </div>
+    <div class="column">
+      <img class="demo cursor" src="../Assets/images/header.jpg" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+    </div>
+  </div>
+</div>
+
+    </section>
+
+
+    <!-- <section class="section__container" id="menu" style="background-color: #eebc7a;">
       <div class="menu_fact">
         <a href="../Views/menu.html"><img src="../Assets/images/svgs/menu.svg" id="menu_svg"></a>
         <h1 style="font-size: 40px;">Étlap</h1>
-        <p>Frissen készített husok hazai termelőktől</p>
-        <p>Frissen készített köretek</p>
-        <p>Saját készítésű hűsítő italok</p>
+        <div style="float: left;" >
+          <u><p>Frissen készített húsok hazai termelőktől</p></u>
+          <li>BBQ csirkeszárnyak</li>
+          <li>Nyílt tűzön készített steak</li>
+          <li>Nyárson sült szalonnák</li>
+        </div>
+        <center><div>
+        <u><p>Frissen készített köretek</p></u>
+        <li>Héjában sült burgonya</li>
+        <li>Sült burgonya</li>
+        <li>Mexikói pirított tortilla</li>
+      </div></center>
+      <div style="float: right;">
+        <u><p>Saját készítésű hűsítő italok</p></u>
+        <li>Sárkánygyümölcsös limonádé</li>
+        <li>Citrom-Lime limonádé</li>
+        <li>Ice teák</li>
+      </div>
         <p></p>
         
       </div>
       
-    </section>
+    </section> -->
 
 
     <footer class="footer">

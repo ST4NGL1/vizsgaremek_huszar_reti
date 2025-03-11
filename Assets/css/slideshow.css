@@ -1,87 +1,121 @@
-* {
-    box-sizing: border-box;
-    
-  }
-  
-  /* Position the image container (needed to position the left and right arrows) */
-  .container {
-    position: relative;
-  }
-  
-  /* Hide the images by default */
-  .mySlides {
-    display: none;
-  }
-  
-  /* Add a pointer when hovering over the thumbnail images */
-  .cursor {
-    cursor: pointer;
-  }
-  
-  /* Next & previous buttons */
-  .prev,
-  .next {
-    cursor: pointer;
-    position: absolute;
-    top: 40%;
-    width: auto;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  /* Position the "next button" to the right */
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Number text (1/3 etc) */
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-  }
-  
-  /* Container for image text */
-  .caption-container {
-    text-align: center;
-    background-color: #222;
-    padding: 2px 16px;
-    color: white;
-  }
-  
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Six columns side by side */
-  .column {
-    float: left;
-    width: 16.66%;
-  }
-  
-  /* Add a transparency effect for thumnbail images */
-  .demo {
-    opacity: 0.6;
-  }
-  
-  .active,
-  .demo:hover {
-    opacity: 1;
-  }
+/*
+    ================================
+        Best Viewed In Full Page
+https://codepen.io/AbubakerSaeed/pen/QWjYYmB
+    ================================
+*/
+
+/* Change slides by clicking on those grayish lines using mouse, can use keyboard arrows too :) */
+
+/* It's not responsive, so check it out in big/large screen */
+
+/* FONT */
+/* ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
+
+/* DEFAULTS */
+/* ========================================================================== */
+
+
+
+
+
+/* C */
+/* ========================================================================== */
+.c {
+  min-width: 700px;
+  width: 700px;
+  height: 500px;
+  border-radius: 12px;
+  padding: 20px;
+  padding-bottom: 40px;
+  box-shadow: 0 8px 48px 2px hsla(10 6% 15% / .4);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+  background: hsl(0 0% 90%);
+
+  box-sizing: border-box;
+}
+
+.ci {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: inherit;
+  height: inherit;
+  transform-origin: left 50%;
+
+  background: inherit;
+
+  z-index: var(--z);
+  transition: .3s ease-out;
+}
+
+.ci img {
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.ch {
+  position: absolute;
+  top: 70%;
+  left: 4%;
+  transform: translateY(-50%);
+
+  font-size: 2rem;
+  color: hsla(var(--h) var(--s) var(--l) / .8);
+  text-shadow: 0 2px 10px hsla(var(--h) var(--s) 10% / .3);
+}
+
+input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  z-index: -10;
+}
+
+label {
+  width: 10%;
+  height: 10px;
+  margin-right: 4px;
+  border-radius: 20px;
+
+  background: hsla(0 0% 90% / .3);
+  cursor: pointer;
+
+  position: relative;
+  z-index: 10;
+}
+
+label:last-child {
+  margin-right: 0;
+}
+
+input:checked+label {
+  background: linear-gradient(to right,
+    hsla(var(--hue) 80% 70% / .7),
+    hsla(calc(var(--hue) + 30) 80% 50% / .7));
+}
+
+input:not(:checked)+label+.ci {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+input:checked+label+.ci~.ci {
+  transform: translateX(100%);
+}
+
+input:not(:checked)+label+.ci {
+  transition: 0;
+}
+
+

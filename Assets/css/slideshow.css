@@ -1,121 +1,39 @@
-/*
-    ================================
-        Best Viewed In Full Page
-https://codepen.io/AbubakerSaeed/pen/QWjYYmB
-    ================================
-*/
-
-/* Change slides by clicking on those grayish lines using mouse, can use keyboard arrows too :) */
-
-/* It's not responsive, so check it out in big/large screen */
-
-/* FONT */
-/* ========================================================================== */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
-
-
-/* DEFAULTS */
-/* ========================================================================== */
-
-
-
-
-
-/* C */
-/* ========================================================================== */
-.c {
-  min-width: 700px;
-  width: 700px;
-  height: 500px;
-  border-radius: 12px;
-  padding: 20px;
-  padding-bottom: 40px;
-  box-shadow: 0 8px 48px 2px hsla(10 6% 15% / .4);
-
+.about__container {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-
-  position: relative;
-  overflow: hidden;
-  background: hsl(0 0% 90%);
-
-  box-sizing: border-box;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background-color: #2f3136
 }
 
-.ci {
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: inherit;
-  height: inherit;
-  transform-origin: left 50%;
-
-  background: inherit;
-
-  z-index: var(--z);
-  transition: .3s ease-out;
+.about__image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.ci img {
-  -moz-user-select: none;
-  user-select: none;
+.about__content {
+  max-width: 600px;
 }
 
-.ch {
-  position: absolute;
-  top: 70%;
-  left: 4%;
-  transform: translateY(-50%);
-
+.about__content h2 {
   font-size: 2rem;
-  color: hsla(var(--h) var(--s) var(--l) / .8);
-  text-shadow: 0 2px 10px hsla(var(--h) var(--s) 10% / .3);
+  margin-bottom: 1rem;
+  color: #ffffff;
 }
 
-input {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  z-index: -10;
+.about__content p {
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
-label {
-  width: 10%;
-  height: 10px;
-  margin-right: 4px;
-  border-radius: 20px;
-
-  background: hsla(0 0% 90% / .3);
-  cursor: pointer;
-
-  position: relative;
-  z-index: 10;
+h2
+{
+  color: white;
+  font-size: 50px;
+  text-align: center;
 }
-
-label:last-child {
-  margin-right: 0;
-}
-
-input:checked+label {
-  background: linear-gradient(to right,
-    hsla(var(--hue) 80% 70% / .7),
-    hsla(calc(var(--hue) + 30) 80% 50% / .7));
-}
-
-input:not(:checked)+label+.ci {
-  transform: translateX(-100%);
-  opacity: 0;
-}
-
-input:checked+label+.ci~.ci {
-  transform: translateX(100%);
-}
-
-input:not(:checked)+label+.ci {
-  transition: 0;
-}
-
-

@@ -19,7 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
        
 
         if (data.success) {
-            window.location.href = "../Views/profile.html";
+            window.location.href = "../Views/home.html";
             console.log("Sikeres bejelentkezés",data.user_id);
         }
         else {

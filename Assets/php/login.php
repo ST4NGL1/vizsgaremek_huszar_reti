@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_name'] = $user['FIRSTNAME'];
     $_SESSION['logged_in'] = true;
 
+  
     // Log session variables
     error_log("Session variables: " . print_r($_SESSION, true));
 
@@ -69,5 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     error_log("Response: " . json_encode($response));
 
     echo json_encode($response);
+     
 }
 ?>

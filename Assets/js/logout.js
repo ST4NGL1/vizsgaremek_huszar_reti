@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     checkSession();
+    
 
     document.getElementById("login").addEventListener("submit", function (e) {
         e.preventDefault();
@@ -22,21 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById("logout").addEventListener("click", function () {
-        fetch("../Assets/php/logout.php")
+        fetch("../Assets/php/logout.php", {
+            method: "DELETE" // RESTful API should use DELETE for logout
+        })
         .then(response => response.json())
         .then(data => {
             alert(data.message);
-            
-            checkSession();
-        });
+            checkSession(); // Refresh UI to reflect logout
+        })
+        .catch(error => console.error("Logout error:", error));
     });
-});
+    
+    });
+
 
 function checkSession() {
     fetch("../Assets/php/session.php")
     .then(response => response.json())
     .then(data => {
         if (data.status === "logged_in") {
+            
             document.getElementById("login").style.backgroundColor = "green";
             document.getElementById("logout").style.backgroundColor = "red";
         } else {

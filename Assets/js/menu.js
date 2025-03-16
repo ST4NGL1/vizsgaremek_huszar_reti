@@ -44,7 +44,7 @@ fetch('../Assets/php/menu.php')
     .catch(error => console.error('Error fetching menu:', error));
 
 function addToCart(itemId) {
-    fetch('../Assets/php/cart.php', {
+    fetch('../Assets/php/add_to_cart.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ itemId })

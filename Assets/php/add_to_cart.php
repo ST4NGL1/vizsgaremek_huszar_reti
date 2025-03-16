@@ -11,8 +11,8 @@ if (!$itemId) {
 
 require_once 'db_connect.php';
 
-$stmt = $pdo->prepare('DELETE FROM cart WHERE ITEMID = :item_id AND USERID = :user_id');
+$stmt = $pdo->prepare('INSERT INTO cart (ITEMID, USERID) VALUES (:item_id, :user_id)');
 $stmt->execute(['user_id' => $_SESSION['user_id'], 'item_id' => $itemId]);
 
-echo json_encode(['success' => true, 'message' => 'Item removed from cart']);
+echo json_encode(['success' => true, 'message' => 'Item added to cart']);
 ?>

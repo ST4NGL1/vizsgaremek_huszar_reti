@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Content-Type: application/json');
     
     // Get input values
-    $email = $data['email'] ?? '';
+    $email = filter_var($data['email'] ?? '', FILTER_SANITIZE_EMAIL);
     $password = $data['password'] ?? '';
 
     // Log input values
@@ -53,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['user_name'] = $user['FIRSTNAME'];
     $_SESSION['logged_in'] = true;
 
-  
     // Log session variables
     error_log("Session variables: " . print_r($_SESSION, true));
 
@@ -70,6 +69,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     error_log("Response: " . json_encode($response));
 
     echo json_encode($response);
-     
 }
 ?>

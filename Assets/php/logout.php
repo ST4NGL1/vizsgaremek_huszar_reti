@@ -1,6 +1,6 @@
 <?php
 
-// Check for a POST request (you can make this more flexible with routing libraries)
+// Check for a DELETE request
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     // Start the session
     session_start();
@@ -13,11 +13,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     header('Content-Type: application/json');
     
     // Return a JSON response indicating success
-    echo json_encode(['success' => true]);
+    echo json_encode(['status' => 'success', 'message' => 'Logout successful']);
     exit();
 }
 
-// If we get here, the request method is not POST, so we can handle the error
+// If we get here, the request method is not DELETE, so we can handle the error
 http_response_code(405); // Method Not Allowed
-echo json_encode(['error' => 'Method not allowed']);
+header('Content-Type: application/json');
+echo json_encode(['status' => 'error', 'message' => 'Method not allowed']);
 exit();
+?>

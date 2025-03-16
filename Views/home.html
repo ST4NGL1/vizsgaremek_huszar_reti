@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"rel="stylesheet"/>
     <link rel="stylesheet" href="../Assets/css/home.css" /> 
     <link rel="stylesheet" href="../Assets/css/slideshow.css">
+    <link rel="stylesheet" href="../Assets/css/loading.css"> <!-- Add this line -->
     <script src="../Assets/js/slideshow.js"></script>
     <title>Grillezett Álom</title>
   </head>
@@ -16,8 +17,8 @@
       <nav>
         <div class="nav__header">
           <div class="nav__logo">
-                <img src="../Assets/images/logo.png" alt="logo" class="nav__logo-dark"/>
-              <img src="../Assets/images/logo2.png" alt="logo" class="nav__logo-white" />
+                <a href="../Views/home.html"><img src="../Assets/images/logo.png" alt="logo" class="nav__logo-dark"/></a>
+                <a href="../Views/home.html"><img src="../Assets/images/logo2.png" alt="logo" class="nav__logo-white" /></a>
           </div>
           <div class="nav__menu__btn" id="menu-btn">
             <i class="ri-menu-line"></i>
@@ -25,11 +26,12 @@
         </div>
 
         <ul class="nav__links" id="nav-links">
-          <li><a href="#about" title="Rólunk">RÓLUNK</a></li>
+          <li><a href="home.html" title="Főoldal">FŐOLDAL</a></li>
           <li><a href="menu.html" title="Étlap">ÉTLAP</a></li>
-          <li><a href="cart.html" title="Kosár">KOSÁR</a></li>
+          <li id="checkout"><a href="checkout.html" title="Kosár">KOSÁR</a></li>
           <li id="login" ><a href="../Views/register.html">BEJELENTEKEZÉS</a></li>
-          <li id="logout"><a href="#">KIJELENTKEZÉS</a></li>
+          <li id="profile" style="display: none;"><a href="../Views/profile.html">PROFIL</a></li>
+          <li id="logout" style="display: none;"><a href="#">KIJELENTKEZÉS</a></li>
         </ul>
       </nav>
 
@@ -107,36 +109,6 @@
    
     
 
-
-    <!-- <section class="section__container" id="menu" style="background-color: #eebc7a;">
-      <div class="menu_fact">
-        <a href="../Views/menu.html"><img src="../Assets/images/svgs/menu.svg" id="menu_svg"></a>
-        <h1 style="font-size: 40px;">Étlap</h1>
-        <div style="float: left;" >
-          <u><p>Frissen készített húsok hazai termelőktől</p></u>
-          <li>BBQ csirkeszárnyak</li>
-          <li>Nyílt tűzön készített steak</li>
-          <li>Nyárson sült szalonnák</li>
-        </div>
-        <center><div>
-        <u><p>Frissen készített köretek</p></u>
-        <li>Héjában sült burgonya</li>
-        <li>Sült burgonya</li>
-        <li>Mexikói pirított tortilla</li>
-      </div></center>
-      <div style="float: right;">
-        <u><p>Saját készítésű hűsítő italok</p></u>
-        <li>Sárkánygyümölcsös limonádé</li>
-        <li>Citrom-Lime limonádé</li>
-        <li>Ice teák</li>
-      </div>
-        <p></p>
-        
-      </div>
-      
-    </section> -->
-
-
     <footer class="footer">
       <div class="section__container footer__container">
         <div class="footer__logo">
@@ -171,10 +143,11 @@
         Copyright © 2024 Grillezett Álom
       </div>
     </footer>
-
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="../Assets/js/main.js"></script>
     <script src="../Assets/js/logout.js"></script>
+    <script src="../Assets/js/home.js"></script>
+    
    
   </body>
 </html>

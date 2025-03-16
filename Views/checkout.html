@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Assets/css/menu.css">
+    <link rel="stylesheet" href="../Assets/css/home.css">
+    <link rel="stylesheet" href="../Assets/css/checkout.css">
+    <link rel="stylesheet" href="../Assets/css/loading.css"> <!-- Add this line -->
+    <title>Checkout</title>
+</head>
+<body>
+    <nav>
+        <div class="nav__header">
+            <div class="nav__logo">
+                <a href="../Views/home.html"><img src="../Assets/images/logo.png" alt="logo" class="nav__logo-dark"/></a>
+                <a href="../Views/home.html"><img src="../Assets/images/logo2.png" alt="logo" class="nav__logo-white" /></a>
+            </div>
+            <div class="nav__menu__btn" id="menu-btn">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+
+        <ul class="nav__links" id="nav-links">
+            <li><a href="home.html" title="Főoldal">FŐOLDAL</a></li>
+            <li><a href="menu.html" title="Étlap">ÉTLAP</a></li>
+            <li><a href="checkout.html" title="Kosár">KOSÁR</a></li>
+            <li id="login"><a href="../Views/register.html">BEJELENTEKEZÉS</a></li>
+            <li id="profile" style="display: none;"><a href="../Views/profile.html">PROFIL</a></li>
+            <li id="logout" style="display: none;"><a href="#">KIJELENTKEZÉS</a></li>
+        </ul>
+    </nav>
+    <div id="main">
+        <h1 class="tangerine-bold">Checkout</h1>
+        <hr>
+        <div id="cart-items" class="cart-items"></div>
+        <div id="summary" class="summary">
+            <h2 class="tangerine-bold">Summary</h2>
+            <p>Total: <span id="total-amount">0</span> Ft</p>
+        </div>
+        <div id="personal-info" class="personal-info">
+            <h2 class="tangerine-bold">Personal Information</h2>
+            <form id="checkout-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" >
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" >
+                <button type="submit" id="checkout-button">Checkout</button>
+            </form>
+        </div>
+    </div>
+    <div id="loading" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <img src="../Assets/images/logo.png" id="loading_img" alt="Loading..." class="loading-logo">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+        <div id="message">Rendelés leadása...</div>
+    </div>
+    <script src="../Assets/js/checkout.js"></script>
+    <script src="../Assets/js/logout.js"></script>
+</body>
+</html>

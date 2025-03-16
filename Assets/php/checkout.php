@@ -1,13 +1,39 @@
 <?php
 session_start();
+include 'db_connection.php'; // Include your database connection file
 
-require_once 'db_connect.php';
+if (!isset($_SESSION['user_id'])) {
+    echo json_encode(['success' => false, 'message' => 'User not logged in']);
+    exit();
+}
 
-$userId = $_SESSION['user_id'];
+$userid = $_SESSION['user_id'];
+$cart = json_decode(file_get_contents('php://input'), true)['cartItems'];
+$totalPrice = 0;
 
-// Clear the cart for the user
-$stmt = $pdo->prepare('DELETE FROM cart WHERE USERID = :user_id');
-$stmt->execute(['user_id' => $userId]);
+// Calculate total price
+foreach ($cart as $item) {
+    $totalPrice += $item['price'] * $item['quantity'];
+}
 
-echo json_encode(['success' => true, 'message' => 'Checkout successful']);
+// Insert order into orders table
+$orderDate = date('Y-m-d H:i:s');
+$sql = "INSERT INTO orders (USERID, ORDERDATE, TOTALPRICE) VALUES (?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("isi", $userid, $orderDate, $totalPrice);
+$stmt->execute();
+$orderID = $stmt->insert_id;
+
+// Insert order items into order_items table
+foreach ($cart as $item) {
+    $sql = "INSERT INTO order_items (ORDERID, ITEMID, QUANTITY, PRICE) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("iiii", $orderID, $item['ITEMID'], $item['quantity'], $item['price']);
+    $stmt->execute();
+}
+
+// Clear the cart
+unset($_SESSION['cart']);
+
+echo json_encode(['success' => true]);
 ?>

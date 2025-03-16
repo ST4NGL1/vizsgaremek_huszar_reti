@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 require_once('db_connect.php');
 
 
-$sql = "SELECT * FROM menu ORDER BY category";
+$sql = "SELECT * FROM menu ORDER BY CATEGORY DESC";
 $result = $conn->query($sql);
 
 $menu = [];

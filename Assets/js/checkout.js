@@ -20,7 +20,7 @@ function loadCart() {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('cart-item');
                 itemDiv.innerHTML = `
-                <span>${item.name} - ${item.price}Ft</span>
+                <span>${item.NAME} - ${item.PRICE}Ft</span>
                 <select data-item-id="${item.ITEMID}" class="quantity-select">
                 ${[...Array(5).keys()].map(i => `<option value="${i + 1}">${i + 1}</option>`).join('')}
                 </select>
@@ -73,11 +73,15 @@ function removeFromCart(itemId) {
     .catch(error => console.error('Error removing item:', error));
 }
 
+
+
 function handleCheckout(event) {
     event.preventDefault();
     document.getElementById('loading').style.display = 'flex'; // Show loading indicator
     setTimeout(submitCheckout, 1000); // Delay the checkout by 1 second
 }
+
+
 
 function submitCheckout() {
     const formData = new FormData(document.getElementById('checkout-form'));

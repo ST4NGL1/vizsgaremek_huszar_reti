@@ -6,11 +6,11 @@ fetch('../Assets/php/menu.php')
 
         const groupedMenu = {};
         data.forEach(item => {
-            if (!groupedMenu[item.category]) {
-                groupedMenu[item.category] = [];
+            if (!groupedMenu[item.CATEGORY]) {
+                groupedMenu[item.CATEGORY] = [];
             }
-            groupedMenu[item.category].push(item);
-        });
+            groupedMenu[item.CATEGORY].push(item);
+        });5
 
         for (const category in groupedMenu) {
             const categoryDiv = document.createElement('div');
@@ -21,7 +21,7 @@ fetch('../Assets/php/menu.php')
             groupedMenu[category].forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('tangerine-bold', 'menu-item');
-                itemDiv.innerText = `${item.name} (${item.description})  ${item.price}Ft`;
+                itemDiv.innerText = `${item.NAME} (${item.DESCRIPTION})  ${item.PRICE}Ft`;
 
                 // Create Add to Cart button
                 const orderButton = document.createElement('button');
@@ -34,7 +34,7 @@ fetch('../Assets/php/menu.php')
                 svgIcon.style.height = '30px';
 
                 orderButton.appendChild(svgIcon);
-                orderButton.addEventListener('click', () => addToCart(item.id));
+                orderButton.addEventListener('click', () => addToCart(item.ITEMID));
                 
                 itemDiv.appendChild(orderButton);
                 menuContainer.appendChild(itemDiv);

@@ -10,13 +10,9 @@ if (!$userId) {
     exit;
 }
 
-$stmt = $pdo->prepare('SELECT LASTNAME, FIRSTNAME, EMAIL, FROM users WHERE id = :user_id');
+$stmt = $pdo->prepare('SELECT LASTNAME, FIRSTNAME, EMAIL FROM users WHERE USERID = :user_id');
 $stmt->execute(['user_id' => $userId]);
 $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($userInfo) {
-    echo json_encode($userInfo);
-} else {
-    echo json_encode(['success' => false, 'message' => 'User not found']);
-}
+echo json_encode($userInfo);
 ?>

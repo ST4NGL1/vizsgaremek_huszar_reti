@@ -1,32 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    checkAuthStatus();
-    loadUserProfile();
-    document.getElementById('profile-form').addEventListener('submit', updateUserProfile);
+    loadProfile();
+    loadOrders();
+    document.getElementById('profile-form').addEventListener('submit', handleProfileUpdate);
 });
 
-function checkAuthStatus() {
-    fetch('../Assets/php/session.php')
-        .then(response => response.json())
-        .then(data => {
-            const loginLink = document.getElementById('login');
-            const profileLink = document.getElementById('profile');
-            const logoutLink = document.getElementById('logout');
-
-            if (data.status === 'logged_in') {
-                loginLink.style.display = 'none';
-                profileLink.style.display = 'block';
-                logoutLink.style.display = 'block';
-            } else {
-                loginLink.style.display = 'block';
-                profileLink.style.display = 'none';
-                logoutLink.style.display = 'none';
-                window.location.href = '../Views/register.html';
-            }
-        })
-        .catch(error => console.error('Error checking auth status:', error));
+function showLoading() {
+    document.getElementById('loading').style.display = 'flex';
 }
 
-function loadUserProfile() {
+function hideLoading() {
+    document.getElementById('loading').style.display = 'none';
+}
+
+function loadProfile() {
+    showLoading();
     fetch('../Assets/php/get_user_info.php')
         .then(response => response.json())
         .then(data => {
@@ -34,28 +21,35 @@ function loadUserProfile() {
             document.getElementById('Firstname').value = data.FIRSTNAME;
             document.getElementById('Email').value = data.EMAIL;
            
+            hideLoading();
         })
-        .catch(error => console.error('Error loading user profile:', error));
+        .catch(error => {
+            console.error('Error loading profile:', error);
+            hideLoading();
+        });
 }
 
-function updateUserProfile(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const userProfile = Object.fromEntries(formData.entries());
-
-    fetch('../Assets/php/update_user_info.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userProfile)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Profile updated successfully!');
-        } else {
-            alert('Failed to update profile.');
-        }
-    })
-    .catch(error => console.error('Error updating user profile:', error));
+function loadOrders() {
+    showLoading();
+    fetch('../Assets/php/get_orders.php')
+        .then(response => response.json())
+        .then(data => {
+            const ordersList = document.getElementById('orders-list');
+            ordersList.innerHTML = '';
+            data.forEach(order => {
+                const orderDiv = document.createElement('div');
+                orderDiv.classList.add('order-item');
+                orderDiv.innerHTML = `
+                    <p>Rendelés ID: ${order.ORDERID}</p>
+                    <p>Dátum: ${order.ORDERDATE}</p>
+                    <p>Összeg: ${order.TOTALPRICE} Ft</p>
+                `;
+                ordersList.appendChild(orderDiv);
+            });
+            hideLoading();
+        })
+        .catch(error => {
+            console.error('Error loading orders:', error);
+            hideLoading();
+        });
 }

@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2025. Feb 25. 13:29
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Mar 16, 2025 at 10:12 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,40 +18,53 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Adatbázis: `restaurant_project`
+-- Database: `restaurant_project_teszt`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
   `CARTID` int(11) NOT NULL,
+  `USERID` int(11) NOT NULL,
   `ITEMID` int(11) NOT NULL,
-  `USERID` int(11) NOT NULL
+  `QUANTITY` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`CARTID`, `USERID`, `ITEMID`, `QUANTITY`) VALUES
+(1, 1, 20, 1),
+(2, 1, 16, 1),
+(3, 1, 16, 1),
+(4, 1, 16, 1),
+(5, 1, 12, 1),
+(6, 1, 19, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `menu`
+-- Table structure for table `menu`
 --
 
 CREATE TABLE `menu` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `category` varchar(100) NOT NULL,
-  `price` int(11) NOT NULL
+  `ITEMID` int(11) NOT NULL,
+  `NAME` varchar(255) NOT NULL,
+  `DESCRIPTION` text NOT NULL,
+  `CATEGORY` varchar(100) NOT NULL,
+  `PRICE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `menu`
+-- Dumping data for table `menu`
 --
 
-INSERT INTO `menu` (`id`, `name`, `description`, `category`, `price`) VALUES
+INSERT INTO `menu` (`ITEMID`, `NAME`, `DESCRIPTION`, `CATEGORY`, `PRICE`) VALUES
 (7, 'BBQ Szárnyak', 'Fűszeres, mézes-barbecue szósszal, friss zöldségekkel', 'Előétel', 1500),
 (8, 'Rántott Jalapeño', 'Töltött jalapeño paprikák, cheddar sajttal, házi BBQ szószban', 'Előétel', 1200),
 (9, 'Sült Kacsamájas Toast', 'Fűszeres BBQ szószban sült kacsamáj, ropogós kenyéren', 'Előétel', 1800),
@@ -75,7 +88,34 @@ INSERT INTO `menu` (`id`, `name`, `description`, `category`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `users`
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `ORDERID` int(11) NOT NULL,
+  `USERID` int(11) NOT NULL,
+  `ORDERDATE` datetime NOT NULL DEFAULT current_timestamp(),
+  `TOTALPRICE` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `ORDERITEMID` int(11) NOT NULL,
+  `ORDERID` int(11) NOT NULL,
+  `ITEMID` int(11) NOT NULL,
+  `QUANTITY` int(11) NOT NULL,
+  `PRICE` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -83,66 +123,114 @@ CREATE TABLE `users` (
   `LASTNAME` varchar(250) NOT NULL,
   `FIRSTNAME` varchar(250) NOT NULL,
   `EMAIL` varchar(300) NOT NULL,
-  `PHONENUMBER` int(11) NOT NULL,
-  `PASSWORD` varchar(200) NOT NULL
+  `PHONENUMBER` varchar(20) NOT NULL,
+  `PASSWORD` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexek a kiírt táblákhoz
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PHONENUMBER`, `PASSWORD`) VALUES
+(1, 'teszt', 'teszt', 'teszt@teszt.com', '', '$2y$10$U4lLj3ciz4nyU5bT.9vXy.96bpJ.HdmpA7YstKGiWs.tp7kY5Wnvy');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- A tábla indexei `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`CARTID`),
-  ADD KEY `ITEMID` (`ITEMID`),
+  ADD KEY `USERID` (`USERID`),
+  ADD KEY `ITEMID` (`ITEMID`);
+
+--
+-- Indexes for table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`ITEMID`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`ORDERID`),
   ADD KEY `USERID` (`USERID`);
 
 --
--- A tábla indexei `menu`
+-- Indexes for table `order_items`
 --
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`ORDERITEMID`),
+  ADD KEY `ORDERID` (`ORDERID`),
+  ADD KEY `ITEMID` (`ITEMID`);
 
 --
--- A tábla indexei `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`USERID`);
+  ADD PRIMARY KEY (`USERID`),
+  ADD UNIQUE KEY `EMAIL` (`EMAIL`);
 
 --
--- A kiírt táblák AUTO_INCREMENT értéke
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT a táblához `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `CARTID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CARTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT a táblához `menu`
+-- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `ITEMID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT a táblához `users`
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `ORDERID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `ORDERITEMID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Megkötések a kiírt táblákhoz
+-- Constraints for dumped tables
 --
 
 --
--- Megkötések a táblához `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`ITEMID`) REFERENCES `menu` (`id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`USERID`) REFERENCES `users` (`USERID`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`USERID`) REFERENCES `users` (`USERID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`ITEMID`) REFERENCES `menu` (`ITEMID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`USERID`) REFERENCES `users` (`USERID`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`ORDERID`) REFERENCES `orders` (`ORDERID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`ITEMID`) REFERENCES `menu` (`ITEMID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -13,12 +13,14 @@ body {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 2px;
 }
 
 h1.tangerine-bold, h2.tangerine-bold {
-    font-family: 'Tangerine', serif;
+    font-family: "Bebas Neue", sans-serif;
     font-weight: bold;
-    color: #333;
+    color: #000000;
 }
 
 hr {
@@ -51,6 +53,8 @@ hr {
 .summary p {
     font-size: 18px;
     font-weight: bold;
+    font-family: "Bebas Neue", sans-serif;
+    
 }
 
 #checkout-form {
@@ -72,7 +76,7 @@ hr {
 
 #checkout-button {
     padding: 10px;
-    background-color: #333;
+    background-color: #722F37;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -81,5 +85,10 @@ hr {
 }
 
 #checkout-button:hover {
-    background-color: #555;
+    background-color: #441c21;
+}
+
+h2{
+    border-top: 2px solid;
+    font-family: "Bebas Neue", sans-serif;
 }

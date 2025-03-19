@@ -1,6 +1,9 @@
-
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
+    
+    // Remove any existing alerts
+    const existingAlerts = document.querySelectorAll('.alert');
+    existingAlerts.forEach(alert => alert.remove());
     
     const formData = {
         email: document.getElementById('login_Email').value,
@@ -16,18 +19,41 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .then(response => response.json())
     .then(data => {
-       
-
         if (data.success) {
             window.location.href = "../Views/home.html";
-            console.log("Sikeres bejelentkezés",data.user_id);
+            console.log("Sikeres bejelentkezés", data.user_id);
         }
         else {
-            alert('Login failed:'+ data.message); // Log the failure message
-           
+            // Create Bootstrap alert
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+            alertDiv.setAttribute('role', 'alert');
+            
+            alertDiv.innerHTML = `
+                <strong>Hiba!</strong> ${data.message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            
+            // Insert alert before the form
+            const form = document.getElementById('loginForm');
+            form.parentNode.insertBefore(alertDiv, form);
         }
-       
     })
-    .catch(error => console.error('Error:', error));
-
+    .catch(error => {
+        console.error('Error:', error);
+        
+        // Create Bootstrap alert for error
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+        alertDiv.setAttribute('role', 'alert');
+        
+        alertDiv.innerHTML = `
+            <strong>Hiba!</strong> Váratlan hiba történt. Kérjük, próbálja újra később.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        `;
+        
+        // Insert alert before the form
+        const form = document.getElementById('loginForm');
+        form.parentNode.insertBefore(alertDiv, form);
+    });
 });

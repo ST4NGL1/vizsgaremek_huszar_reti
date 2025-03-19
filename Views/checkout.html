@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Assets/css/menu.css">
     <link rel="stylesheet" href="../Assets/css/home.css">
     <link rel="stylesheet" href="../Assets/css/checkout.css">
-    <link rel="stylesheet" href="../Assets/css/loading.css"> <!-- Add this line -->
-    <title>Checkout</title>
+    <link rel="stylesheet" href="../Assets/css/loading.css">
+    <title>Restaurant Cart</title>
 </head>
 <body>
     <nav>
@@ -30,26 +30,13 @@
         </ul>
     </nav>
     <div id="main">
-        <h1 class="tangerine-bold">Checkout</h1>
+        <h1>Cart</h1>
         <hr>
-        <div id="cart-items" class="cart-items"></div>
-        
-        <div id="personal-info" class="personal-info">
-            <h2 class="tangerine-bold">Personal Information</h2>
-            <form id="checkout-form">
-                <label for="name">Name:</label>
-                <input type="text" id="Lastname" name="name">
-                <label for="email">Email:</label>
-                <input type="email" id="Email" name="email" >
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" >
-                <div id="summary" class="summary">
-                    <h2 class="tangerine-bold">Summary</h2>
-                    <p>Total: <span id="total-amount">0</span> Ft</p>
-                </div>
-                <button type="submit" id="checkout-button">Checkout</button>
-            </form>
-        </div>
+        <div id="cart-container"></div>
+        <p>Total Amount: <span id="total-amount">0</span> Ft</p>
+        <form id="checkout-form">
+            <button type="submit" id="checkout-button">Checkout</button>
+        </form>
     </div>
     <div id="loading" class="loading-overlay" style="display: none;">
         <div class="loading-spinner">
@@ -59,7 +46,7 @@
                 <div class="dot2"></div>
             </div>
         </div>
-        <div id="message">Rendelés leadása...</div>
+        <div id="message">Loading...</div>
     </div>
     <script src="../Assets/js/checkout.js"></script>
     <script src="../Assets/js/logout.js"></script>

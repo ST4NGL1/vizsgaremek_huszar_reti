@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadProfile();
     loadOrders();
-    document.getElementById('profile-form').addEventListener('submit', handleProfileUpdate);
 });
 
 function showLoading() {
@@ -31,21 +30,51 @@ function loadProfile() {
 
 function loadOrders() {
     showLoading();
-    fetch('../Assets/php/get_orders.php')
+    fetch('../Assets/php/order_history.php')
         .then(response => response.json())
         .then(data => {
-            const ordersList = document.getElementById('orders-list');
-            ordersList.innerHTML = '';
+            const ordersContainer = document.getElementById('orders-container');
+            ordersContainer.innerHTML = '';
+
+            if (data.length === 0) {
+                ordersContainer.innerHTML = '<p>No previous orders found.</p>';
+                hideLoading();
+                return;
+            }
+
+            const ordersMap = new Map();
+
             data.forEach(order => {
-                const orderDiv = document.createElement('div');
-                orderDiv.classList.add('order-item');
-                orderDiv.innerHTML = `
-                    <p>Rendelés ID: ${order.ORDERID}</p>
-                    <p>Dátum: ${order.ORDERDATE}</p>
-                    <p>Összeg: ${order.TOTALPRICE} Ft</p>
-                `;
-                ordersList.appendChild(orderDiv);
+                if (!ordersMap.has(order.ORDERID)) {
+                    ordersMap.set(order.ORDERID, {
+                        orderDate: order.ORDERDATE,
+                        totalPrice: order.TOTALPRICE,
+                        items: []
+                    });
+                }
+                ordersMap.get(order.ORDERID).items.push({
+                    name: order.NAME,
+                    quantity: order.QUANTITY,
+                    price: order.PRICE
+                });
             });
+
+            ordersMap.forEach((order, orderId) => {
+                const orderElement = document.createElement('div');
+                orderElement.classList.add('order-item');
+                orderElement.innerHTML = `
+                    <h3>Order ID: ${orderId}</h3>
+                    <p>Date: ${order.orderDate}</p>
+                    <p>Total Price: ${order.totalPrice} Ft</p>
+                    <div class="order-items">
+                        ${order.items.map(item => `
+                            <p>${item.quantity} x ${item.name} - ${item.price} Ft/db</p>
+                        `).join('')}
+                    </div>
+                `;
+                ordersContainer.appendChild(orderElement);
+            });
+
             hideLoading();
         })
         .catch(error => {

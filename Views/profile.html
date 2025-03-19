@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>User Profile</title>
     <link rel="stylesheet" href="../Assets/css/home.css">
     <link rel="stylesheet" href="../Assets/css/profile.css">
-    <link rel="stylesheet" href="../Assets/css/loading.css"> <!-- Add this line -->
+    <link rel="stylesheet" href="../Assets/css/loading.css">
     <script src="../Assets/js/profile.js"></script>
 </head>
 <body>
@@ -32,44 +32,37 @@
     </nav>
     <div class="container">
         <div class="profile-header">
-            <h1>Your Profile</h1>
+            <h2>User Profile</h2>
         </div>
-        <div class="profile-content">
-            <div class="personal-info">
-                <h3>Személyes Információk</h3>
-                <form class="profile-form" id="profile-form">
-                    <div class="form-group">
-                        <label for="Lastname">Last Name:</label>
-                        <input type="text" id="Lastname" name="Lastname">
-                    </div>
-                    <div class="form-group">
-                        <label for="Firstname">First Name:</label>
-                        <input type="text" id="Firstname" name="Firstname">
-                    </div>
-                    <div class="form-group">
-                        <label for="Email">Email:</label>
-                        <input type="email" id="Email" name="Email">
-                    </div>
-                    
-                </form>
+        <form id="profile-form" class="profile-form">
+            <div class="form-group">
+                <label for="Lastname">Last Name:</label>
+                <input type="text" id="Lastname" name="Lastname">
             </div>
-            <div class="previous-orders">
-                <h2>Your Orders</h2>
-                <div id="orders-list">
-                    <!-- Orders will be loaded here -->
+            <div class="form-group">
+                <label for="Firstname">First Name:</label>
+                <input type="text" id="Firstname" name="Firstname">
+            </div>
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="email" id="Email" name="Email">
+            </div>
+            <button type="submit">Update Profile</button>
+        </form>
+        <div id="loading" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner">
+                <img src="../Assets/images/logo.png" id="loading_img" alt="Loading..." class="loading-logo">
+                <div class="spinner">
+                    <div class="dot1"></div>
+                    <div class="dot2"></div>
                 </div>
             </div>
+            <div id="message">Betöltés...</div>
         </div>
-    </div>
-    <div id="loading" class="loading-overlay" style="display: none;">
-        <div class="loading-spinner">
-            <img src="../Assets/images/logo.png" id="loading_img" alt="Loading..." class="loading-logo">
-            <div class="spinner">
-                <div class="dot1"></div>
-                <div class="dot2"></div>
-            </div>
+        <div class="orders-section">
+            <h2>Previous Orders</h2>
+            <div id="orders-container"></div>
         </div>
-        <div id="message">Betöltés...</div>
     </div>
     <script src="../Assets/js/logout.js"></script>
 </body>

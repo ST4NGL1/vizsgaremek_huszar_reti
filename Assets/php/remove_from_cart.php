@@ -1,20 +1,13 @@
 <?php
 session_start();
-include 'db_connection.php'; // Include your database connection file
 
-if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'User not logged in']);
-    exit();
-}
+require_once 'db_connect.php';
 
-$userid = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];
 $itemId = json_decode(file_get_contents('php://input'), true)['itemId'];
 
-// Remove item from cart
-$sql = "DELETE FROM cart WHERE USERID = ? AND ITEMID = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ii", $userid, $ITEMID);
-$stmt->execute();
+$stmt = $pdo->prepare('DELETE FROM cart WHERE USERID = :user_id AND ITEMID = :item_id');
+$stmt->execute(['user_id' => $userId, 'item_id' => $itemId]);
 
 echo json_encode(['success' => true]);
 ?>

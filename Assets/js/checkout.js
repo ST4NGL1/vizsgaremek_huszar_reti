@@ -7,7 +7,7 @@ function loadCart() {
     fetch('../Assets/php/cart.php')
         .then(response => response.json())
         .then(data => {
-            const cartContainer = document.getElementById('cart-items');
+            const cartContainer = document.getElementById('cart-container');
             cartContainer.innerHTML = '';
             
             if (data.length === 0) {
@@ -22,7 +22,7 @@ function loadCart() {
                 itemDiv.innerHTML = `
                 <span>${item.NAME} - ${item.PRICE}Ft</span>
                 <select data-item-id="${item.ITEMID}" class="quantity-select">
-                ${[...Array(5).keys()].map(i => `<option value="${i + 1}">${i + 1}</option>`).join('')}
+                ${[...Array(5).keys()].map(i => `<option value="${i + 1}" ${item.QUANTITY == i + 1 ? 'selected' : ''}>${i + 1}</option>`).join('')}
                 </select>
                 <button class="remove-button" data-item-id="${item.ITEMID}">❌</button>
                 `;
@@ -35,7 +35,7 @@ function loadCart() {
             });
 
             document.querySelectorAll('.quantity-select').forEach(select => {
-                select.addEventListener('change', updateTotalAmount);
+                select.addEventListener('change', updateQuantity);
             });
 
             updateTotalAmount();
@@ -56,6 +56,28 @@ function updateTotalAmount() {
     document.getElementById('total-amount').textContent = totalAmount;
 }
 
+function updateQuantity(event) {
+    const itemId = event.target.getAttribute('data-item-id');
+    const quantity = event.target.value;
+
+    fetch('../Assets/php/cart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: `item_id=${itemId}&quantity=${quantity}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            updateTotalAmount();
+        } else {
+            alert('Failed to update quantity.');
+        }
+    })
+    .catch(error => console.error('Error updating quantity:', error));
+}
+
 function removeFromCart(itemId) {
     fetch('../Assets/php/remove_from_cart.php', {
         method: 'POST',
@@ -73,15 +95,11 @@ function removeFromCart(itemId) {
     .catch(error => console.error('Error removing item:', error));
 }
 
-
-
 function handleCheckout(event) {
     event.preventDefault();
     document.getElementById('loading').style.display = 'flex'; // Show loading indicator
     setTimeout(submitCheckout, 1000); // Delay the checkout by 1 second
 }
-
-
 
 function submitCheckout() {
     const formData = new FormData(document.getElementById('checkout-form'));
@@ -104,12 +122,13 @@ function submitCheckout() {
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data); // Log the response to see what is being returned
         document.getElementById('loading').style.display = 'none'; // Hide loading indicator
         if (data.success) {
-           // alert('Checkout successful!');
             loadCart();
+            alert('Checkout successful!');
         } else {
-            alert('Failed to checkout.');
+            alert('Failed to checkout: ' + data.message);
         }
     })
     .catch(error => {

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadProfile();
     loadOrders();
+    document.getElementById('profile-form').addEventListener('submit', handleProfileUpdate);
 });
 
 function showLoading() {
@@ -68,7 +69,7 @@ function loadOrders() {
                     <p>Total Price: ${order.totalPrice} Ft</p>
                     <div class="order-items">
                         ${order.items.map(item => `
-                            <p>${item.quantity} x ${item.name} - ${item.price} Ft/db</p>
+                            <p>${item.quantity} x ${item.name} - ${item.price} Ft each</p>
                         `).join('')}
                     </div>
                 `;
@@ -81,4 +82,31 @@ function loadOrders() {
             console.error('Error loading orders:', error);
             hideLoading();
         });
+}
+
+function handleProfileUpdate(event) {
+    event.preventDefault();
+    showLoading();
+
+    const formData = new FormData(document.getElementById('profile-form'));
+    const profileData = Object.fromEntries(formData.entries());
+
+    fetch('../Assets/php/update_user_info.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(profileData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideLoading();
+        if (data.success) {
+            alert('Profile updated successfully!');
+        } else {
+            alert('Failed to update profile: ' + data.message);
+        }
+    })
+    .catch(error => {
+        hideLoading();
+        console.error('Error updating profile:', error);
+    });
 }

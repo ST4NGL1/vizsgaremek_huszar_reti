@@ -10,13 +10,17 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $userId = $_SESSION['user_id'];
+$data = json_decode(file_get_contents('php://input'), true);
+
+$lastname = $data['Lastname'];
+$firstname = $data['Firstname'];
+$email = $data['Email'];
 
 try {
-    $stmt = $pdo->prepare("SELECT LASTNAME, FIRSTNAME, EMAIL FROM users WHERE USERID = ?");
-    $stmt->execute([$userId]);
-    $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $pdo->prepare("UPDATE users SET LASTNAME = ?, FIRSTNAME = ?, EMAIL = ? WHERE USERID = ?");
+    $stmt->execute([$lastname, $firstname, $email, $userId]);
 
-    echo json_encode($userInfo);
+    echo json_encode(['success' => true]);
 } catch (Exception $e) {
     echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 }

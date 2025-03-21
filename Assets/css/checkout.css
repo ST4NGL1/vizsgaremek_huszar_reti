@@ -1,16 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    background-image: url('../images/login.jpg'); 
-    /* background-color: #f4f4f4; */
+    background-image: url('../images/checkout_test3.jpg'); 
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     margin: 0;
     padding: 0;
 }
 
 #main {
-    max-width: 800px;
+    max-width: 50%;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(155, 155, 155, 0.623);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     font-family: "Bebas Neue", sans-serif;
@@ -23,23 +25,17 @@ h1.tangerine-bold, h2.tangerine-bold {
     color: #000000;
 }
 
-hr {
-    border: 0;
-    height: 1px;
-    background: #ddd;
-    margin: 20px 0;
-}
-
 .cart-items, .summary, .personal-info {
     margin-bottom: 20px;
 }
 
 .cart-item {
+    font-size: 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dddddd3a;
 }
 
 .cart-item span {
@@ -91,4 +87,9 @@ hr {
 h2{
     border-top: 2px solid;
     font-family: "Bebas Neue", sans-serif;
+}
+
+#totalprice{
+    font-size: 35px;
+    
 }

@@ -64,12 +64,12 @@ function loadOrders() {
                 const orderElement = document.createElement('div');
                 orderElement.classList.add('order-item');
                 orderElement.innerHTML = `
-                    <h3>Order ID: ${orderId}</h3>
-                    <p>Date: ${order.orderDate}</p>
-                    <p>Total Price: ${order.totalPrice} Ft</p>
+                    <h3>Rendelés azonosítója: ${orderId}</h3>
+                    <p>Dátut: ${order.orderDate}</p>
+                    <p>Teljes összeg: ${order.totalPrice} Ft</p>
                     <div class="order-items">
                         ${order.items.map(item => `
-                            <p>${item.quantity} x ${item.name} - ${item.price} Ft each</p>
+                            <p>${item.quantity} x ${item.name} - ${item.price} Ft</p>
                         `).join('')}
                     </div>
                 `;

@@ -40,6 +40,7 @@ body {
 }
 
 label {
+    text-transform: uppercase;
     font-size: 22px;
     font-weight: 600;
     color: #000000;
@@ -60,20 +61,6 @@ input:focus {
     outline: none;
 }
 
-button {
-    margin: auto;
-    width: 30%;
-    padding: 12px 20px;
-    background-color: #722F37;
-    color: white;
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: background-color 0.3s ease;
-}
-
 button:hover {
     background-color: #441c21;
 }
@@ -81,7 +68,7 @@ button:hover {
 .order-item {
     padding: 15px;
     border: 1px solid #722F37;
-    border-radius: 5px;
+    border-radius: 15px;
     margin-bottom: 15px;
     background-color: #f9f9f9be;
 }
@@ -165,3 +152,58 @@ button:hover {
         margin: 10px 0;
     }
 }
+
+/* Save button */
+button {
+    margin: auto;
+    width: 15%;
+    font-family: inherit;
+    font-size: 20px;
+    background: #722F37;
+    color: white;
+    fill: rgb(155, 153, 153);
+    padding: 0.7em 1em;
+    padding-left: 0.9em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    font-weight: 1000;
+  }
+  
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background: #441c21;
+  }
+  
+  button:hover .svg-wrapper {
+    transform: scale(1.25);
+    transition: 0.5s linear;
+  }
+  
+  button:hover svg {
+    transform: translateX(1.2em) scale(1.1);
+    fill: #fff;
+  }
+  
+  button:hover span {
+    opacity: 0;
+    transition: 0.5s linear;
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  

@@ -10,7 +10,7 @@ fetch('../Assets/php/menu.php')
                 groupedMenu[item.CATEGORY] = [];
             }
             groupedMenu[item.CATEGORY].push(item);
-        });5
+        });
 
         for (const category in groupedMenu) {
             const categoryDiv = document.createElement('div');
@@ -21,22 +21,20 @@ fetch('../Assets/php/menu.php')
             groupedMenu[category].forEach(item => {
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('tangerine-bold', 'menu-item');
-                itemDiv.innerText = `${item.NAME} (${item.DESCRIPTION})  ${item.PRICE}Ft`;
+                itemDiv.innerHTML = `
+                    ${item.NAME} (${item.DESCRIPTION}) ${item.PRICE}Ft
+                    <div tabindex="0" class="plusButton">
+                        <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+                            <g mask="url(#mask0_21_345)">
+                                <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"></path>
+                            </g>
+                        </svg>
+                    </div>
+                `;
 
-                // Create Add to Cart button
-                const orderButton = document.createElement('button');
-                orderButton.classList.add('order-button');
-
-                const svgIcon = document.createElement('img');
-                svgIcon.src = '../Assets/images/svgs/cart.svg';
-                svgIcon.alt = 'Cart Icon';
-                svgIcon.style.width = '30px';
-                svgIcon.style.height = '30px';
-
-                orderButton.appendChild(svgIcon);
+                const orderButton = itemDiv.querySelector('.plusButton');
                 orderButton.addEventListener('click', () => addToCart(item.ITEMID));
                 
-                itemDiv.appendChild(orderButton);
                 menuContainer.appendChild(itemDiv);
             });
         }
@@ -52,10 +50,26 @@ function addToCart(itemId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert('Item added to cart!');
+            showPopup();
         } else {
             alert(data.message || 'Failed to add item to cart.');
         }
     })
     .catch(error => console.error('Error adding to cart:', error));
 }
+
+
+function showPopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'flex';
+}
+
+function closePopup() {
+    const popup = document.getElementById('popup');
+    popup.style.display = 'none';
+}
+
+document.getElementById('continue-shopping').addEventListener('click', closePopup);
+document.getElementById('go-to-cart').addEventListener('click', () => {
+    window.location.href = 'checkout.html';
+});

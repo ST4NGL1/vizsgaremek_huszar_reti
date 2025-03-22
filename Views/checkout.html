@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../Assets/css/menu.css">
     <link rel="stylesheet" href="../Assets/css/home.css">
     <link rel="stylesheet" href="../Assets/css/checkout.css">
-    <link rel="stylesheet" href="../Assets/css/loading.css">
     <link rel="icon" type="image/x-icon" href="../Assets/images/logo.png">
     <title>Grillezett Álom</title>
 </head>
@@ -57,13 +56,15 @@
               </button>
         </form>
     </div>
-    <div id="popup" class="popup">
+    <div id="popup" class="popup" style="display: none;">
         <div class="popup-content">
-            <p>Sikeres rendelés!</p>
+          <h3>Sikeres rendelés!</h3>
+            <p id="pickup-time"></p>
             <button id="close-popup" class="popup-button">Bezárás</button>
             <button id="go-to-profile" class="popup-button">Tovább a profilodhoz</button>
         </div>
     </div>
+    
     <script src="../Assets/js/checkout.js"></script>
     <script src="../Assets/js/logout.js"></script>
 </body>

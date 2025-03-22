@@ -1,6 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     document.getElementById('checkout-form').addEventListener('submit', handleCheckout);
+    document.getElementById('close-popup').addEventListener('click', closePopup);
+    document.getElementById('go-to-profile').addEventListener('click', () => {
+        window.location.href = 'profile.html';
+    });
+
+    const menuBtn = document.getElementById('menu-btn');
+    const navLinks = document.getElementById('nav-links');
+
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('show');
+    });
 });
 
 function loadCart() {
@@ -141,6 +152,10 @@ function submitCheckout() {
 
 function showPopup() {
     const popup = document.getElementById('popup');
+    const currentTime = new Date();
+    currentTime.setHours(currentTime.getHours() + 1);
+    const pickupTime = currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('pickup-time').textContent = `Rendelésed készen lesz ${pickupTime}-ra`;
     popup.style.display = 'flex';
 }
 
@@ -148,8 +163,3 @@ function closePopup() {
     const popup = document.getElementById('popup');
     popup.style.display = 'none';
 }
-
-document.getElementById('close-popup').addEventListener('click', closePopup);
-document.getElementById('go-to-profile').addEventListener('click', () => {
-    window.location.href = 'profile.html';
-});

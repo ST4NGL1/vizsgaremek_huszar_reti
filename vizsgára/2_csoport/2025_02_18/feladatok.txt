@@ -1,0 +1,9 @@
+1. útvonalak javítása--> működő alkalmazás létrehozása az alap funkciókkal
+2. ingatlanok.html-be készíts egy formot, amiben ki lehet választani egy kategoriát 
+   legördülő listából (legördülő listát api alapján töltse), és egy submit gombra kattintva a 
+   táblázatban csak az adott ingatlanok jelenjenek meg
+3. API: kivalasztott.php => csak az adott kategóriájú ingatlanokat kérje le az adatbázisból
+   (GET vagy POST method, visszatérés JSON)
+4. ingatlanok.js módosítása, ami kiegészül egy frontenddel, ami működteti a fent megírt API
+
+--ne felejstd el a könyvtárszerkezet megtartását és az útvonalak beállítását (api)

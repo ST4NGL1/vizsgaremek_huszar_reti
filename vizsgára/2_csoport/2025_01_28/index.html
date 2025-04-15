@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Ingatlanok</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="feladas.html">Hirdetés feladása</a></li>
+            <li><a href="torles.html">Hirdetés törlésa</a></li>
+        </ul>
+    </nav>
+    <h1>Hírdetések adatai:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Azonosító</th>
+                <th>Kategória</th>
+                <th>Leírás</th>
+                <th>Hírdetés Dátuma</th>
+                <th>Tehermentes</th>
+                <th>Ár</th>
+                <th>Kép</th>
+            </tr>
+        </thead>
+        <tbody id="ingatlanok">
+            <!-- ide kerülnek az ingatlanok adatai -->
+        </tbody>
+    </table>
+    <h2>Ingatlan típusa:</h2>
+    <form id="valasszForm">
+        <select name="kategoriak" id="kategoriak">
+            <!-- ide kerülnek egy legördülő listába a kategória nevek, és value paraméterként az id-k -->
+        </select>
+        <button type="submit">Válassz</button>
+    </form>
+    <script src="index.js"></script>
+</body>
+</html>

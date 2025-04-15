@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/13_G/2024_12_04/public/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Új hirdetés feladása</h1>
+    <form id = "hozzadForm">
+        <label for="kategoria">Ingatlan típusa:</label>
+        <select name="kategoria" id="kategoria">
+            <!--ide tesszük a kategoriakat (option) a kategoria végpontot felhasználva-->
+        </select>
+        <br>
+        <label for="hirdetesDatuma">Hirdetés dátuma: </label>
+        <input type="text" name="hirdetesDatuma" id="hirdetesDatuma" readonly>
+        <br>
+        <label for="leiras">Leírás: </label>
+        <textarea name="leiras" id="leiras" required></textarea>
+        <br>
+        <label for="tehermentes">Tehermentes: </label>
+        <label for="igen">Igen: </label>
+        <input type="radio" name="tehermentes" id="teherementes_igen"> <!--a két radio gomb name paramétere azonos kell legyen ahhoz, hogy csak az egyiket lehessen kijelölni-->
+        <label for="nem">Nem: </label>
+        <input type="radio" name="tehermentes" id="teherementes_nem">
+        <br>
+        <label for="ar">Ár: </label>
+        <input type="number" name="ar" id="ar" required>
+        <br>
+        <label for="kepUrl">Kép URL: </label>
+        <input type="text" name="kepUrl" id="kepUrl" required>
+        <br>
+        <button type="submit">Hirdetés feladása</button>
+
+    </form>
+    <script src="/13_G/2024_12_04/public/js/feladas.js"></script>
+</body>
+</html>

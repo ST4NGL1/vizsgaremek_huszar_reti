@@ -1,0 +1,76 @@
+img{
+    height: 100px;
+    width: 100px;
+}
+h1,h2{
+    text-align: center;
+    font-style: italic;
+}
+form{
+    width: 500px;
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: blanchedalmond;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,
+select{
+    width: 90%;
+    margin: 10px;
+    border-radius: 4px;
+    border: 1px solid gray;
+}
+button[type="submit"]{
+    background-color: cadetblue;
+    font-size: 16px;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+button[type="submit"]:hover{
+    background-color: gray;
+}
+.navbar li{
+    list-style-type: none;
+}
+.navbar a{
+    float: left;
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+}
+.navbar{
+    background-color: darkgrey;
+    overflow: hidden;
+}
+/*reszponzitivitás*/
+@media screen and (max-width: 600px) {
+    .navbar a{
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+table{
+    width: 100%;
+    margin-top: 20px;
+}
+th{
+    background-color: #f0f1e3;
+    
+}
+td:last-child{
+    text-align: center;
+}
+th,td{
+    border: 1px solid lightgoldenrodyellow;
+    border-radius: 8px;
+}

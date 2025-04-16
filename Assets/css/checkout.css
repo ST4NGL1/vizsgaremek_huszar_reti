@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px;
     background-image: url('../images/profile_bg.jpg'); 
     background-size: cover;
     background-attachment: fixed;
@@ -142,7 +143,7 @@ h2{
    /* Checkout button */
    .checkout-button {
     margin: auto;
-    width: 13%;
+    width: 20%;
     font-family: inherit;
     font-size: 20px;
     background: #722F37;
@@ -162,6 +163,7 @@ h2{
     display: block;
     margin-left: 0.3em;
     transition: all 0.3s ease-in-out;
+    
   }
   
   button svg {

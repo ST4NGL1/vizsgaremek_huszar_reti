@@ -5,7 +5,7 @@
   --secondary-color: #ffc135;
   --tertiary-color: #df1c1c;
   --text-dark: #212529;
-  --white: #09a109;
+  --white: #000000;
   --max-width: 1280px;
   --header-font-1: "Alfa Slab One", serif;
   --header-font-2: "Bebas Neue", sans-serif;
@@ -531,6 +531,175 @@ nav {
   }
  
 
+}
+
+/* General adjustments for smaller screens */
+@media (max-width: 768px) {
+  .section__container {
+    padding: 3rem 1rem;
+  }
+
+  .section__header {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+
+  .section__description {
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .header__content h1 {
+    font-size: 3.5rem;
+    line-height: 3rem;
+  }
+
+  .header__content h2 {
+    font-size: 1.5rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .header__image img {
+    max-width: 100%;
+  }
+
+  .banner__container {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .order__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order__card img {
+    max-width: 200px;
+  }
+
+  .order__card h4 {
+    font-size: 1.2rem;
+  }
+
+  .order__card p {
+    font-size: 0.9rem;
+  }
+
+  .reservation__container h3 {
+    font-size: 1.5rem;
+  }
+
+  .reservation__container form {
+    max-width: 100%;
+  }
+
+  .footer__container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer__links li {
+    font-size: 14px;
+  }
+
+  .footer__socials a {
+    font-size: 20px;
+  }
+
+  .about__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .about__image {
+    order: -1; /* Ensure the image appears on top */
+    margin-bottom: 1rem;
+  }
+
+  .about__image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .about__header { 
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .about__description {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin: 1rem 0;
+  }
+}
+
+/* Adjustments for very small screens (mobile-first approach) */
+@media (max-width: 480px) {
+  .section__header {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .header__content h1 {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+
+  .header__content h2 {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .banner__card p {
+    font-size: 1.2rem;
+  }
+
+  .banner__card h4 {
+    font-size: 1.5rem;
+  }
+
+  .order__card h4 {
+    font-size: 1rem;
+  }
+
+  .order__card p {
+    font-size: 0.8rem;
+  }
+
+  .footer__links li {
+    font-size: 12px;
+  }
+
+  .footer__socials a {
+    font-size: 18px;
+  }
+
+  .about__header {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .about__description {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .about__image img {
+    max-width: 90%;
+  }
 }
 
 .menu_fact 

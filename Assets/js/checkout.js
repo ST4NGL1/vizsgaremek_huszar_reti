@@ -135,12 +135,12 @@ function submitCheckout() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data); // Log the response to see what is being returned
+        console.log(data);
         if (data.success) {
             setTimeout(() => {
                 showPopup();
                 loadCart();
-            }, 1000); // 1-second delay before showing the popup
+            }, 1000);
         } else {
             alert('Failed to checkout: ' + data.message);
         }

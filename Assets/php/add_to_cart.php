@@ -14,5 +14,5 @@ require_once 'db_connect.php';
 $stmt = $pdo->prepare('INSERT INTO cart (ITEMID, USERID) VALUES (:item_id, :user_id)');
 $stmt->execute(['user_id' => $_SESSION['user_id'], 'item_id' => $itemId]);
 
-echo json_encode(['success' => true, 'message' => 'Item added to cart']);
+echo json_encode(['success' => true, 'message' => 'Sikeresen hozzáadva a kosárhoz']);
 ?>

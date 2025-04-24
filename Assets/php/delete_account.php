@@ -1,11 +1,11 @@
 <?php
 session_start();
-require 'database.php'; // Include your database connection
+require 'db_connect.php';
 
 $response = array('success' => false, 'message' => '');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userId = $_SESSION['user_id']; // Assuming user ID is stored in session
+    $userId = $_SESSION['user_id']; 
 
     if ($userId) {
         $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
@@ -13,14 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->execute()) {
             $response['success'] = true;
-            session_destroy(); // Destroy the session after account deletion
+            session_destroy(); 
         } else {
-            $response['message'] = 'Failed to delete account.';
+            $response['message'] = 'Hiba a fiók törlésekor.';
         }
 
         $stmt->close();
     } else {
-        $response['message'] = 'User not logged in.';
+        $response['message'] = 'Felhasználó nincs bejelentkezve.';
     }
 } else {
     $response['message'] = 'Invalid request method.';

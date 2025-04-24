@@ -1,7 +1,7 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    // Remove any existing alerts
+   
     const existingAlerts = document.querySelectorAll('.alert');
     existingAlerts.forEach(alert => alert.remove());
     
@@ -24,7 +24,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             console.log("Sikeres bejelentkezés", data.user_id);
         }
         else {
-            // Create Bootstrap alert
+         
             const alertDiv = document.createElement('div');
             alertDiv.className = 'alert alert-danger alert-dismissible fade show';
             alertDiv.setAttribute('role', 'alert');
@@ -34,7 +34,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             `;
             
-            // Insert alert before the form
+          
             const form = document.getElementById('loginForm');
             form.parentNode.insertBefore(alertDiv, form);
         }
@@ -42,7 +42,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     .catch(error => {
         console.error('Error:', error);
         
-        // Create Bootstrap alert for error
+      
         const alertDiv = document.createElement('div');
         alertDiv.className = 'alert alert-danger alert-dismissible fade show';
         alertDiv.setAttribute('role', 'alert');
@@ -52,7 +52,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         `;
         
-        // Insert alert before the form
+     
         const form = document.getElementById('loginForm');
         form.parentNode.insertBefore(alertDiv, form);
     });

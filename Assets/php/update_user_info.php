@@ -1,11 +1,11 @@
 <?php
 session_start();
-include 'db_connect.php'; // Ensure this file is correctly named and included
+include 'db_connect.php';;
 
 header('Content-Type: application/json');
 
 if (!isset($_SESSION['user_id'])) {
-    echo json_encode(['success' => false, 'message' => 'User not logged in']);
+    echo json_encode(['success' => false, 'message' => 'Felhasználó nincs bejelentkezve']);
     exit();
 }
 

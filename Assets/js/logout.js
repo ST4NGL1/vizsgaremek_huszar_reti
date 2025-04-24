@@ -29,11 +29,11 @@ function checkSession() {
     .then(response => response.json())
     .then(data => {
         if (data.status === "logged_in") {
-            document.getElementById("login").style.display = "none"; // Hide login form
-            document.getElementById("logout").style.display = "block"; // Show logout button
+            document.getElementById("login").style.display = "none"; 
+            document.getElementById("logout").style.display = "block"; 
         } else {
-            document.getElementById("login").style.display = "block"; // Show login form
-            document.getElementById("logout").style.display = "none"; // Hide logout button
+            document.getElementById("login").style.display = "block"; 
+            document.getElementById("logout").style.display = "none"; 
         }
     })
     .catch(error => console.error("Session check error:", error));
@@ -45,7 +45,7 @@ function logoutUser() {
         .then(data => {
             alert(data.message);
             if (data.status === "success") {
-                checkSession(); // Refresh UI to reflect logout
+                checkSession(); 
             }
         })
         .catch(error => console.error("Logout error:", error));
@@ -99,7 +99,7 @@ function logoutUser() {
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                alert('Logged out successfully.');
+                alert('Sikeres kijelentkezés.');
                 window.location.href = '../Views/home.html';
             } else {
                 alert('Failed to logout.');

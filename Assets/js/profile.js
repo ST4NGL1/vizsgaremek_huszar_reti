@@ -3,14 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     loadOrders();
     document.getElementById('profile-form').addEventListener('submit', handleProfileUpdate);
     
-    // Add event listeners for popup buttons
+    
     document.getElementById('delete-account').addEventListener('click', showDeletePopup);
     document.getElementById('confirm-delete').addEventListener('click', deleteAccount);
     document.getElementById('cancel-delete').addEventListener('click', hideDeletePopup);
     document.getElementById('close-save-popup').addEventListener('click', hideSavePopup);
 });
 
-// Remove the unused loading functions since there's no loading element
+
 function loadProfile() {
     fetch('../Assets/php/get_user_info.php')
         .then(response => response.json())
@@ -98,7 +98,7 @@ function handleProfileUpdate(event) {
     });
 }
 
-// Add the missing popup handling functions
+
 function showSavePopup() {
     document.getElementById('save-popup').style.display = 'flex';
 }

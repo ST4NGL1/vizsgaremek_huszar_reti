@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'database.php'; // Include your database connection
+require 'db_connect.php'; // Include your database connection
 
 $response = array('success' => false, 'message' => '');
 

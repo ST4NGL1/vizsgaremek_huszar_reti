@@ -51,11 +51,6 @@ function logoutUser() {
         .catch(error => console.error("Logout error:", error));
 }
 
-
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     checkAuthStatus();
 });
@@ -70,9 +65,9 @@ function checkAuthStatus() {
             const checkoutLink = document.getElementById('checkout-link');
 
             if (data.status === 'logged_in') {
-                loginLink.style.display = 'none';
-                profileLink.style.display = 'block';
-                logoutLink.style.display = 'block';
+                if (loginLink) loginLink.style.display = 'none';
+                if (profileLink) profileLink.style.display = 'block';
+                if (logoutLink) logoutLink.style.display = 'block';
                 if (checkoutLink) {
                     checkoutLink.addEventListener('click', (e) => {
                         e.preventDefault();
@@ -80,9 +75,9 @@ function checkAuthStatus() {
                     });
                 }
             } else {
-                loginLink.style.display = 'block';
-                profileLink.style.display = 'none';
-                logoutLink.style.display = 'none';
+                if (loginLink) loginLink.style.display = 'block';
+                if (profileLink) profileLink.style.display = 'none';
+                if (logoutLink) logoutLink.style.display = 'none';
                 if (checkoutLink) {
                     checkoutLink.addEventListener('click', (e) => {
                         e.preventDefault();

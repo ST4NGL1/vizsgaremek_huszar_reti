@@ -1,30 +1,41 @@
 <?php
+// Turn off error display in output
+ini_set('display_errors', 0);
+error_reporting(E_ALL);
+
 session_start();
 require 'db_connect.php';
 
 $response = array('success' => false, 'message' => '');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $userId = $_SESSION['user_id']; 
-
-    if ($userId) {
-        $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
-        $stmt->bind_param("i", $userId);
-
-        if ($stmt->execute()) {
-            $response['success'] = true;
-            session_destroy(); 
+try {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!isset($_SESSION['user_id'])) {
+            $response['message'] = 'Felhasználó nincs bejelentkezve.';
         } else {
-            $response['message'] = 'Hiba a fiók törlésekor.';
+            $userId = $_SESSION['user_id'];
+            
+            $stmt = $conn->prepare("DELETE FROM users WHERE USERID = ?");
+            $stmt->bind_param("i", $userId);
+            
+            if ($stmt->execute()) {
+                $response['success'] = true;
+                session_destroy();
+            } else {
+                $response['message'] = 'Hiba a fiók törlésekor: ' . $conn->error;
+            }
+            
+            $stmt->close();
         }
-
-        $stmt->close();
     } else {
-        $response['message'] = 'Felhasználó nincs bejelentkezve.';
+        $response['message'] = 'Invalid request method.';
     }
-} else {
-    $response['message'] = 'Invalid request method.';
+} catch (Exception $e) {
+    $response['message'] = 'Exception: ' . $e->getMessage();
 }
 
+// Ensure proper JSON headers
+header('Content-Type: application/json');
 echo json_encode($response);
+exit;
 ?>

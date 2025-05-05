@@ -86,10 +86,10 @@ function updateQuantity(event) {
         if (data.status === 'success') {
             updateTotalAmount();
         } else {
-            alert('Failed to update quantity.');
+            alert('Sikertelen vol a mennyiség frissítése.');
         }
     })
-    .catch(error => console.error('Error updating quantity:', error));
+    .catch(error => console.error('Sikertelen mennyiség frissítés:', error));
 }
 
 function removeFromCart(itemId) {
@@ -103,10 +103,10 @@ function removeFromCart(itemId) {
         if (data.success) {
             loadCart();
         } else {
-            alert('Failed to remove item from cart.');
+            alert('Sikertelen a tétel törlése a kosárból.');
         }
     })
-    .catch(error => console.error('Error removing item:', error));
+    .catch(error => console.error('Sikertelen tétel törlés:', error));
 }
 
 function handleCheckout(event) {
@@ -142,11 +142,11 @@ function submitCheckout() {
                 loadCart();
             }, 1000);
         } else {
-            alert('Failed to checkout: ' + data.message);
+            alert('Sikertelen kijelentkezés: ' + data.message);
         }
     })
     .catch(error => {
-        console.error('Error during checkout:', error);
+        console.error('Sikertelen kijelentkezési próbálkozás:', error);
     });
 }
 
@@ -155,7 +155,7 @@ function showPopup() {
     const currentTime = new Date();
     currentTime.setHours(currentTime.getHours() + 1);
     const pickupTime = currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    document.getElementById('pickup-time').textContent = `Rendelésed készen lesz ${pickupTime}-ra`;
+    document.getElementById('pickup-time').textContent = `Rendelésed elkészül ${pickupTime} időpontra`;
     popup.style.display = 'flex';
 }
 

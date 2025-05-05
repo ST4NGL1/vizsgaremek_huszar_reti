@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f9;
-    background-image: url('../images/profile_bg.jpg');
+    background-image: url('../images/checkout_test1.jpg');
     background-size: cover;
     
 }
@@ -290,6 +290,9 @@ input:focus {
     width: 100%;
     text-align: center;
 }
+.popup-content p {
+    color: black;
+}
 
 .popup-buttons {
     margin-top: 20px;
@@ -313,4 +316,9 @@ input:focus {
 .btn-secondary {
     background-color: #6c757d;
     color: white;
+}
+
+p {
+    color: white;
+    text-align: center;
 }

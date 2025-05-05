@@ -52,7 +52,7 @@ function addToCart(itemId) {
         if (data.success) {
             showPopup();
         } else {
-            alert(data.message || 'Failed to add item to cart.');
+            alert(data.message || 'Tétel hozzáadása sikertelen.');
         }
     })
     .catch(error => console.error('Error adding to cart:', error));

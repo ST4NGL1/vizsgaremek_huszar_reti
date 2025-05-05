@@ -97,7 +97,7 @@ function logoutUser() {
                 alert('Sikeres kijelentkezés.');
                 window.location.href = '../Views/home.html';
             } else {
-                alert('Failed to logout.');
+                alert('Sikertelen kijelentkezés.');
             }
         })
         .catch(error => console.error('Error logging out:', error));

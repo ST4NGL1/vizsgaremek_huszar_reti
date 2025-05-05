@@ -73,3 +73,78 @@ h2
   letter-spacing: 2px;
 }
 
+
+
+.about__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background-color: #d2b48c;
+  
+}
+
+.about__image img {
+  width: 100%;
+  max-width: 500px;
+  box-shadow: none;
+  margin: 0px;
+}
+
+.about__content {
+  max-width: 600px;
+  margin-left: 5rem;
+}
+
+.about__content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.about__content p {
+  font-size: 1.2rem;
+  color: #000000;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  text-align: justify;
+  letter-spacing: 1px;
+  
+  /* margin-right: 20px; */
+  font-family: "Bebas Neue", sans-serif;
+}
+
+h2
+{
+  color: rgb(0, 0, 0);
+  font-size: 5rem;
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  text-shadow: none;
+  letter-spacing: 2px;
+}
+
+
+#team_member
+{
+  border-bottom: 2px solid;
+  color: rgb(0, 0, 0);
+  text-align: right;
+  font-size: 2rem;
+  font-family: "Bebas Neue", sans-serif;
+  text-shadow: none;
+  letter-spacing: 2px;
+}
+
+.team_name
+{
+  color: rgb(0, 0, 0);
+  line-height: 1.5;
+  text-align: right;
+  font-size: 1.5rem;
+  font-family: "Bebas Neue", sans-serif;
+  text-shadow: none;
+  letter-spacing: 2px;
+}
+

@@ -1,58 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-    checkSession();
+    try {
+        
+        checkAuthStatus();
 
-    document.getElementById("login").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const email = document.getElementById("email").value;
-        const jelszo = document.getElementById("jelszo").value;
-
-        fetch("../Assets/php/login.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `email=${email}&jelszo=${jelszo}`
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            if (data.success) {
-                checkSession();
-            }
-        })
-        .catch(error => console.error("Login error:", error));
-    });
-
-    document.getElementById("logout").addEventListener("click", logoutUser);
-});
-
-function checkSession() {
-    fetch("../Assets/php/session.php")
-    .then(response => response.json())
-    .then(data => {
-        if (data.status === "logged_in") {
-            document.getElementById("login").style.display = "none"; 
-            document.getElementById("logout").style.display = "block"; 
-        } else {
-            document.getElementById("login").style.display = "block"; 
-            document.getElementById("logout").style.display = "none"; 
-        }
-    })
-    .catch(error => console.error("Session check error:", error));
-}
-
-function logoutUser() {
-    fetch("../Assets/php/logout.php", { method: "DELETE" })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            if (data.status === "success") {
-                checkSession(); 
-            }
-        })
-        .catch(error => console.error("Logout error:", error));
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    checkAuthStatus();
+       
+        setupLogoutModal();
+    } catch (error) {
+        console.error("Error in logout.js initialization:", error);
+    }
 });
 
 function checkAuthStatus() {
@@ -65,6 +20,7 @@ function checkAuthStatus() {
             const checkoutLink = document.getElementById('checkout-link');
 
             if (data.status === 'logged_in') {
+                
                 if (loginLink) loginLink.style.display = 'none';
                 if (profileLink) profileLink.style.display = 'block';
                 if (logoutLink) logoutLink.style.display = 'block';
@@ -75,6 +31,7 @@ function checkAuthStatus() {
                     });
                 }
             } else {
+              
                 if (loginLink) loginLink.style.display = 'block';
                 if (profileLink) profileLink.style.display = 'none';
                 if (logoutLink) logoutLink.style.display = 'none';
@@ -89,16 +46,67 @@ function checkAuthStatus() {
         .catch(error => console.error('Error checking auth status:', error));
 }
 
-function logoutUser() {
-    fetch('../Assets/php/logout.php', { method: 'DELETE' })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                alert('Sikeres kijelentkezés.');
-                window.location.href = '../Views/home.html';
-            } else {
-                alert('Sikertelen kijelentkezés.');
+function setupLogoutModal() {
+    
+    const logoutButton = document.querySelector('#logout a');
+    const modal = document.getElementById('logoutModal');
+    const confirmBtn = document.getElementById('confirmLogout');
+    const cancelBtn = document.getElementById('cancelLogout');
+    
+    
+    if (!logoutButton || !modal || !confirmBtn || !cancelBtn) {
+        console.log('One or more logout elements not found. Skipping logout modal setup.');
+        return;
+    }
+    
+   
+    logoutButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); 
+        modal.style.display = 'flex';
+    });
+    
+    
+    confirmBtn.addEventListener('click', function() {
+       
+        fetch('../Assets/php/logout.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             }
         })
-        .catch(error => console.error('Error logging out:', error));
+        .then(response => {
+            try {
+                return response.json();
+            } catch (error) {
+               
+                window.location.href = '../Views/home.html';
+                throw error;
+            }
+        })
+        .then(data => {
+            if (data && data.status === 'success') {
+                window.location.href = '../Views/home.html';
+            } else {
+                console.error('Logout failed:', data ? data.message : 'Unknown error');
+                window.location.href = '../Views/home.html';
+            }
+        })
+        .catch(error => {
+            console.error('Error during logout:', error);
+            window.location.href = '../Views/home.html'; 
+        });
+    });
+    
+   
+    cancelBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+    
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
 }

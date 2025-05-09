@@ -1,23 +1,15 @@
 <?php
+// filepath: c:\xampp\htdocs\vizsga\vizsgaremek_huszar_reti\Assets\php\logout.php
+session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    
-    session_start();
+// Clear all session variables
+$_SESSION = array();
 
-    
-    session_unset();
-    session_destroy();
+// Destroy the session
+session_destroy();
 
-    header('Content-Type: application/json');
-    
-    
-    echo json_encode(['status' => 'success', 'message' => 'Sikeres kijelentkezés']);
-    exit();
-}
-
-
-http_response_code(405); 
+// Return success response
 header('Content-Type: application/json');
-echo json_encode(['status' => 'error', 'message' => 'Method Not Allowed']);
-exit();
+echo json_encode(['status' => 'success', 'message' => 'Sikeres kijelentkezés.']);
+exit;
 ?>

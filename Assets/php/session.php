@@ -1,6 +1,6 @@
 <?php
 require_once "db_connect.php";
-session_start(); // Start the session
+session_start(); 
 
 if (isset($_SESSION["user_id"])) {
     echo json_encode([

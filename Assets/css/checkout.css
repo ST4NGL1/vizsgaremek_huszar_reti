@@ -1,16 +1,16 @@
-/* Base styles for checkout page */
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
   background-color: #000000;
-  background-image: url('../images/new_checkout.webp') !important;
+  background-image: url('../images/checkout.webp') !important;
   color: white;
 }
 
 #main {
   max-width: 1000px;
-  margin: 100px auto 30px; /* Increased top margin to account for centered navbar */
+  margin: 100px auto 30px; 
   padding: 20px;
 }
 
@@ -21,7 +21,7 @@ h1 {
   font-size: 2.5rem;
 }
 
-/* Cart item styling */
+
 #cart-container {
   
   background-color: rgba(78, 77, 77, 0.405) !important;
@@ -73,7 +73,7 @@ h1 {
   background-color: rgba(255, 107, 107, 0.2);
 }
 
-/* Total price styling */
+
 #totalprice {
   text-align: right;
   font-size: 1.3rem;
@@ -85,7 +85,7 @@ h1 {
   color: #722F37;
 }
 
-/* Form styling */
+
 #checkout-form {
   display: flex;
   flex-direction: column;
@@ -136,7 +136,7 @@ h1 {
   align-items: center;
 }
 
-/* Popup styling */
+
 .popup {
   position: fixed;
   top: 0;
@@ -189,7 +189,7 @@ h1 {
   transform: scale(1.05);
 }
 
-/* Tooltip styling */
+
 .tooltip {
   position: relative;
   display: inline-block;
@@ -218,7 +218,7 @@ h1 {
   opacity: 1;
 }
 
-/* Responsive design */
+
 @media (max-width: 768px) {
   #main {
       margin-top: 80px;
@@ -253,7 +253,7 @@ h1 {
   
 }
 
-/* Custom animations for responsiveness */
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

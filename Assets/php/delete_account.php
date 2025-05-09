@@ -1,5 +1,5 @@
 <?php
-// Turn off error display in output
+
 ini_set('display_errors', 0);
 error_reporting(E_ALL);
 
@@ -34,7 +34,7 @@ try {
     $response['message'] = 'Exception: ' . $e->getMessage();
 }
 
-// Ensure proper JSON headers
+
 header('Content-Type: application/json');
 echo json_encode($response);
 exit;

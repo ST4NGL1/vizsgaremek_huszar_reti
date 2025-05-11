@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('show');
     });
 
-    // Add initialization for empty cart popup
+   
     if (document.getElementById('empty-cart-popup')) {
         document.getElementById('close-empty-cart-popup').addEventListener('click', closeEmptyCartPopup);
     }
@@ -51,7 +51,7 @@ function checkLoginStatus() {
         });
 }
 
-// Modify your existing loadCart function
+
 function loadCart() {
     fetch('../Assets/php/cart.php')
         .then(response => response.json())
@@ -59,7 +59,7 @@ function loadCart() {
             const cartContainer = document.getElementById('cart-container');
             cartContainer.innerHTML = '';
             
-            // Store cart status in a global variable for use in handleCheckout
+           
             window.cartIsEmpty = data.length === 0;
             
             if (data.length === 0) {
@@ -150,11 +150,10 @@ function removeFromCart(itemId) {
     .catch(error => console.error('Sikertelen tétel törlés:', error));
 }
 
-// Modify your handleCheckout function
 function handleCheckout(event) {
     event.preventDefault();
    
-    // Check if cart is empty
+    
     if (window.cartIsEmpty) {
         showEmptyCartPopup();
         return;

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to check login status using the existing session.php
+    
     function checkLoginStatus() {
         fetch('../Assets/php/session.php')
             .then(response => response.json())
@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const checkoutElement = document.getElementById('checkout');
                 
                 if (data.status === 'logged_in') {
-                    // User is logged in, show checkout option
+                   
                     checkoutElement.style.display = '';
                 } else {
-                    // User is not logged in, hide checkout option
+                    
                     checkoutElement.style.display = 'none';
                 }
             })
@@ -19,6 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Run check on page load
+    
     checkLoginStatus();
 });

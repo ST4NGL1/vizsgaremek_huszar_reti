@@ -9,8 +9,8 @@ body {
 .container {
     font-family: "Bebas Neue", sans-serif;
     display: flex;
-    flex-direction: column; /* Megváltoztatva, hogy egymás alatt legyenek */
-    max-width: 800px; /* Keskenyebb konténer */
+    flex-direction: column;
+    max-width: 800px; 
     margin: 30px auto;
     padding: 20px;
     border-radius: 8px;
@@ -19,15 +19,15 @@ body {
 }
 
 .profile-section, .orders-section {
-    width: 100%; /* Teljes szélességet használ */
-    margin: 10px 0; /* Felül-alul margin */
+    width: 100%; 
+    margin: 10px 0; 
 }
 
 .profile-section {
     background-color: rgba(0, 0, 0, 0.399);
     border-radius: 15px;
     padding: 10px;
-    margin-bottom: 20px; /* Távolság a két szekció között */
+    margin-bottom: 20px; 
 }
 
 .orders-section {
@@ -90,7 +90,7 @@ input:focus {
 
 .order-item {
     margin: auto;
-    width: 70%; /* Szélesebb rendelési elemek */
+    width: 70%; 
     padding: 15px;
     border: 1px solid #722F37;
     box-shadow: -3px -3px 15px #d2b48c;
@@ -118,7 +118,7 @@ input:focus {
     overflow-y: auto;
 }
 
-/* Mobilnézet már nem szükséges specifikusan módosítani, mivel alapból egymás alatt vannak */
+
 @media (max-width: 768px) {
     .container {
         max-width: 95%;
@@ -129,7 +129,7 @@ input:focus {
     }
 }
 
-/* Save button */
+
 #save {
     font-family: "Bebas Neue", sans-serif;
     font-size: 15px;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2025 at 10:12 PM
+-- Generation Time: May 11, 2025 at 05:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restaurant_project_teszt`
+-- Database: `restaurant_project`
 --
 
 -- --------------------------------------------------------
@@ -33,18 +33,6 @@ CREATE TABLE `cart` (
   `ITEMID` int(11) NOT NULL,
   `QUANTITY` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`CARTID`, `USERID`, `ITEMID`, `QUANTITY`) VALUES
-(1, 1, 20, 1),
-(2, 1, 16, 1),
-(3, 1, 16, 1),
-(4, 1, 16, 1),
-(5, 1, 12, 1),
-(6, 1, 19, 1);
 
 -- --------------------------------------------------------
 
@@ -98,6 +86,13 @@ CREATE TABLE `orders` (
   `TOTALPRICE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`ORDERID`, `USERID`, `ORDERDATE`, `TOTALPRICE`) VALUES
+(76, 10, '2025-05-11 17:34:34', 900);
+
 -- --------------------------------------------------------
 
 --
@@ -112,6 +107,13 @@ CREATE TABLE `order_items` (
   `PRICE` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`ORDERITEMID`, `ORDERID`, `ITEMID`, `QUANTITY`, `PRICE`) VALUES
+(69, 76, 19, 1, 900);
+
 -- --------------------------------------------------------
 
 --
@@ -123,7 +125,6 @@ CREATE TABLE `users` (
   `LASTNAME` varchar(250) NOT NULL,
   `FIRSTNAME` varchar(250) NOT NULL,
   `EMAIL` varchar(300) NOT NULL,
-  `PHONENUMBER` varchar(20) NOT NULL,
   `PASSWORD` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -131,8 +132,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PHONENUMBER`, `PASSWORD`) VALUES
-(1, 'teszt', 'teszt', 'teszt@teszt.com', '', '$2y$10$U4lLj3ciz4nyU5bT.9vXy.96bpJ.HdmpA7YstKGiWs.tp7kY5Wnvy');
+INSERT INTO `users` (`USERID`, `LASTNAME`, `FIRSTNAME`, `EMAIL`, `PASSWORD`) VALUES
+(10, 'teszt', 'teszt', 'teszt@teszt.com', '$2y$10$tQVrIKQ8IOmF6VZUDdgUEeo/YGkZI/hDui1woyqDSITh3mB5B1i2O');
 
 --
 -- Indexes for dumped tables
@@ -182,7 +183,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `CARTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `CARTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
 
 --
 -- AUTO_INCREMENT for table `menu`
@@ -194,19 +195,19 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `ORDERID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ORDERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `ORDERITEMID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ORDERITEMID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('go-to-profile').addEventListener('click', () => {
         window.location.href = 'profile.html';
     });
+    
+    
+    const goToLoginBtn = document.getElementById('go-to-login-btn');
+    if (goToLoginBtn) {
+        goToLoginBtn.addEventListener('click', () => {
+            window.location.href = '../Views/register.html';
+        });
+    }
+    
+    const closeLoginPopupBtn = document.getElementById('close-login-popup-btn');
+    if (closeLoginPopupBtn) {
+        closeLoginPopupBtn.addEventListener('click', closeLoginRequiredPopup);
+    }
 
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
@@ -12,14 +25,42 @@ document.addEventListener('DOMContentLoaded', () => {
     menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('show');
     });
+
+    // Add initialization for empty cart popup
+    if (document.getElementById('empty-cart-popup')) {
+        document.getElementById('close-empty-cart-popup').addEventListener('click', closeEmptyCartPopup);
+    }
 });
 
+function checkLoginStatus() {
+    return fetch('../Assets/php/session.php')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            //console.log("Login status check:", data);
+           
+            return data.status === "logged_in";
+        })
+        .catch(error => {
+            console.error('Error checking login status:', error);
+            return false;
+        });
+}
+
+// Modify your existing loadCart function
 function loadCart() {
     fetch('../Assets/php/cart.php')
         .then(response => response.json())
         .then(data => {
             const cartContainer = document.getElementById('cart-container');
             cartContainer.innerHTML = '';
+            
+            // Store cart status in a global variable for use in handleCheckout
+            window.cartIsEmpty = data.length === 0;
             
             if (data.length === 0) {
                 cartContainer.innerHTML = '<p class="tangerine-bold">A kosár üres.</p>';
@@ -109,9 +150,32 @@ function removeFromCart(itemId) {
     .catch(error => console.error('Sikertelen tétel törlés:', error));
 }
 
+// Modify your handleCheckout function
 function handleCheckout(event) {
     event.preventDefault();
-    submitCheckout();
+   
+    // Check if cart is empty
+    if (window.cartIsEmpty) {
+        showEmptyCartPopup();
+        return;
+    }
+   
+    checkLoginStatus()
+        .then(isLoggedIn => {
+           // console.log("User login status:", isLoggedIn);
+            
+            if (isLoggedIn) {
+               // console.log("User is logged in, proceeding with checkout");
+                submitCheckout();
+            } else {
+               // console.log("User is NOT logged in, showing login popup");
+                showLoginRequiredPopup();
+            }
+        })
+        .catch(error => {
+           // console.error("Error during login check:", error);
+            showLoginRequiredPopup();
+        });
 }
 
 function submitCheckout() {
@@ -135,19 +199,29 @@ function submitCheckout() {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
+       // console.log(data);
         if (data.success) {
             setTimeout(() => {
                 showPopup();
                 loadCart();
             }, 1000);
         } else {
-            alert('Sikertelen kijelentkezés: ' + data.message);
+            alert('Sikertelen rendelés: ' + data.message);
         }
     })
     .catch(error => {
-        console.error('Sikertelen kijelentkezési próbálkozás:', error);
+        console.error('Sikertelen rendelési próbálkozás:', error);
     });
+}
+
+function showLoginRequiredPopup() {
+    const loginPopup = document.getElementById('login-required-popup');
+    loginPopup.style.display = 'flex';
+}
+
+function closeLoginRequiredPopup() {
+    const loginPopup = document.getElementById('login-required-popup');
+    loginPopup.style.display = 'none';
 }
 
 function showPopup() {
@@ -162,4 +236,43 @@ function showPopup() {
 function closePopup() {
     const popup = document.getElementById('popup');
     popup.style.display = 'none';
+}
+
+
+function showEmptyCartPopup() {
+  
+    let popup = document.getElementById('empty-cart-popup');
+    
+    if (!popup) {
+       
+        popup = document.createElement('div');
+        popup.id = 'empty-cart-popup';
+        popup.className = 'popup';
+        popup.innerHTML = `
+            <div class="popup-content">
+                <span class="close-btn" id="close-empty-cart-popup">&times;</span>
+                <h2>Üres kosár</h2>
+                <p>A kosár üres. Kérjük, adj hozzá termékeket az étlapról.</p>
+                <button id="go-to-menu-btn">Tovább az étlaphoz</button>
+            </div>
+        `;
+        
+        document.body.appendChild(popup);
+    }
+    
+   
+    popup.style.display = 'flex';
+    
+    document.getElementById('close-empty-cart-popup').addEventListener('click', closeEmptyCartPopup);
+    document.getElementById('go-to-menu-btn').addEventListener('click', () => {
+        closeEmptyCartPopup();
+        window.location.href = '../Views/menu.html'; 
+    });
+}
+
+function closeEmptyCartPopup() {
+    const popup = document.getElementById('empty-cart-popup');
+    if (popup) {
+        popup.style.display = 'none';
+    }
 }
